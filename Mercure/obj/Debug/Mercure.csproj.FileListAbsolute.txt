@@ -1,0 +1,60 @@
+c:\users\administrateur\documents\visual studio 2012\Projects\Mercure\Mercure\bin\Debug\Mercure.exe.config
+c:\users\administrateur\documents\visual studio 2012\Projects\Mercure\Mercure\bin\Debug\Mercure.exe
+c:\users\administrateur\documents\visual studio 2012\Projects\Mercure\Mercure\bin\Debug\Mercure.pdb
+c:\users\administrateur\documents\visual studio 2012\Projects\Mercure\Mercure\obj\Debug\Mercure.csprojResolveAssemblyReference.cache
+c:\users\administrateur\documents\visual studio 2012\Projects\Mercure\Mercure\obj\Debug\Mercure.Properties.Resources.resources
+c:\users\administrateur\documents\visual studio 2012\Projects\Mercure\Mercure\obj\Debug\Mercure.csproj.GenerateResource.Cache
+c:\users\administrateur\documents\visual studio 2012\Projects\Mercure\Mercure\obj\Debug\Mercure.exe
+c:\users\administrateur\documents\visual studio 2012\Projects\Mercure\Mercure\obj\Debug\Mercure.pdb
+c:\users\administrateur\documents\visual studio 2012\Projects\Mercure\Mercure\bin\Debug\System.Data.SQLite.dll
+c:\users\administrateur\documents\visual studio 2012\Projects\Mercure\Mercure\bin\Debug\System.Data.SQLite.xml
+c:\users\administrateur\documents\visual studio 2012\Projects\Mercure\Mercure\obj\Debug\Mercure.SelectionXML.resources
+c:\users\administrateur\documents\visual studio 2012\Projects\Mercure\Mercure\obj\Debug\Mercure.MainForm.resources
+C:\Users\Administrateur\Documents\Visual Studio 2012\Projects\Mercure (TP C# DotNet)\Mercure\bin\Debug\Mercure.exe.config
+C:\Users\Administrateur\Documents\Visual Studio 2012\Projects\Mercure (TP C# DotNet)\Mercure\obj\Debug\Mercure.exe
+C:\Users\Administrateur\Documents\Visual Studio 2012\Projects\Mercure (TP C# DotNet)\Mercure\obj\Debug\Mercure.pdb
+C:\Users\Administrateur\Documents\Visual Studio 2012\Projects\Mercure (TP C# DotNet)\Mercure\bin\Debug\Mercure.exe
+C:\Users\Administrateur\Documents\Visual Studio 2012\Projects\Mercure (TP C# DotNet)\Mercure\bin\Debug\Mercure.pdb
+C:\Users\Administrateur\Documents\Visual Studio 2012\Projects\Mercure (TP C# DotNet)\Mercure\bin\Debug\System.Data.SQLite.dll
+C:\Users\Administrateur\Documents\Visual Studio 2012\Projects\Mercure (TP C# DotNet)\Mercure\bin\Debug\System.Data.SQLite.xml
+C:\Users\Administrateur\Documents\Visual Studio 2012\Projects\Mercure (TP C# DotNet)\Mercure\obj\Debug\Mercure.csprojResolveAssemblyReference.cache
+C:\Users\Administrateur\Documents\Visual Studio 2012\Projects\Mercure (TP C# DotNet)\Mercure\obj\Debug\Mercure.MainForm.resources
+C:\Users\Administrateur\Documents\Visual Studio 2012\Projects\Mercure (TP C# DotNet)\Mercure\obj\Debug\Mercure.Properties.Resources.resources
+C:\Users\Administrateur\Documents\Visual Studio 2012\Projects\Mercure (TP C# DotNet)\Mercure\obj\Debug\Mercure.SelectionXML.resources
+C:\Users\Administrateur\Documents\Visual Studio 2012\Projects\Mercure (TP C# DotNet)\Mercure\obj\Debug\Mercure.csproj.GenerateResource.Cache
+C:\Users\Administrateur\Documents\Visual Studio 2012\Projects\Mercure (TP C# DotNet)\Mercure\bin\Debug\SQLite.Interop.dll
+C:\Users\Administrateur\Documents\Visual Studio 2012\Projects\Mercure (TP C# DotNet)\Mercure\bin\Debug\Mercure.SQLite
+C:\Users\Administrateur\Documents\Visual Studio 2012\Projects\Mercure (TP C# DotNet)\Mercure\bin\Debug\Mercure.xml
+C:\Users\Administrateur\Desktop\Mercure (TP C# DotNet)\Mercure\bin\Debug\Mercure.xml
+C:\Users\Administrateur\Desktop\Mercure (TP C# DotNet)\Mercure\bin\Debug\SQLite.Interop.dll
+C:\Users\Administrateur\Desktop\Mercure (TP C# DotNet)\Mercure\bin\Debug\Mercure.SQLite
+C:\Users\Administrateur\Desktop\Mercure (TP C# DotNet)\Mercure\bin\Debug\Mercure.exe.config
+C:\Users\Administrateur\Desktop\Mercure (TP C# DotNet)\Mercure\bin\Debug\Mercure.exe
+C:\Users\Administrateur\Desktop\Mercure (TP C# DotNet)\Mercure\bin\Debug\Mercure.pdb
+C:\Users\Administrateur\Desktop\Mercure (TP C# DotNet)\Mercure\bin\Debug\System.Data.SQLite.dll
+C:\Users\Administrateur\Desktop\Mercure (TP C# DotNet)\Mercure\bin\Debug\System.Data.SQLite.xml
+C:\Users\Administrateur\Desktop\Mercure (TP C# DotNet)\Mercure\obj\Debug\Mercure.csprojResolveAssemblyReference.cache
+C:\Users\Administrateur\Desktop\Mercure (TP C# DotNet)\Mercure\obj\Debug\Mercure.MainForm.resources
+C:\Users\Administrateur\Desktop\Mercure (TP C# DotNet)\Mercure\obj\Debug\Mercure.Properties.Resources.resources
+C:\Users\Administrateur\Desktop\Mercure (TP C# DotNet)\Mercure\obj\Debug\Mercure.SelectionXML.resources
+C:\Users\Administrateur\Desktop\Mercure (TP C# DotNet)\Mercure\obj\Debug\Mercure.csproj.GenerateResource.Cache
+C:\Users\Administrateur\Desktop\Mercure (TP C# DotNet)\Mercure\obj\Debug\Mercure.exe
+C:\Users\Administrateur\Desktop\Mercure (TP C# DotNet)\Mercure\obj\Debug\Mercure.pdb
+E:\PROGRAMMATION\Workspace Visual Studio\Mercure (TP C# DotNet)\Mercure\bin\Debug\Mercure.xml
+E:\PROGRAMMATION\Workspace Visual Studio\Mercure (TP C# DotNet)\Mercure\bin\Debug\SQLite.Interop.dll
+E:\PROGRAMMATION\Workspace Visual Studio\Mercure (TP C# DotNet)\Mercure\bin\Debug\Mercure.SQLite
+E:\PROGRAMMATION\Workspace Visual Studio\Mercure (TP C# DotNet)\Mercure\bin\Debug\Mercure.exe.config
+E:\PROGRAMMATION\Workspace Visual Studio\Mercure (TP C# DotNet)\Mercure\bin\Debug\Mercure.exe
+E:\PROGRAMMATION\Workspace Visual Studio\Mercure (TP C# DotNet)\Mercure\bin\Debug\Mercure.pdb
+E:\PROGRAMMATION\Workspace Visual Studio\Mercure (TP C# DotNet)\Mercure\bin\Debug\System.Data.SQLite.dll
+E:\PROGRAMMATION\Workspace Visual Studio\Mercure (TP C# DotNet)\Mercure\bin\Debug\System.Data.SQLite.xml
+E:\PROGRAMMATION\Workspace Visual Studio\Mercure (TP C# DotNet)\Mercure\bin\Debug\System.Data.SQLite.dll.config
+E:\PROGRAMMATION\Workspace Visual Studio\Mercure (TP C# DotNet)\Mercure\obj\Debug\Mercure.csprojResolveAssemblyReference.cache
+E:\PROGRAMMATION\Workspace Visual Studio\Mercure (TP C# DotNet)\Mercure\obj\Debug\Mercure.MainForm.resources
+E:\PROGRAMMATION\Workspace Visual Studio\Mercure (TP C# DotNet)\Mercure\obj\Debug\Mercure.Properties.Resources.resources
+E:\PROGRAMMATION\Workspace Visual Studio\Mercure (TP C# DotNet)\Mercure\obj\Debug\Mercure.SelectionXML.resources
+E:\PROGRAMMATION\Workspace Visual Studio\Mercure (TP C# DotNet)\Mercure\obj\Debug\Mercure.csproj.GenerateResource.cache
+E:\PROGRAMMATION\Workspace Visual Studio\Mercure (TP C# DotNet)\Mercure\obj\Debug\Mercure.csproj.CoreCompileInputs.cache
+E:\PROGRAMMATION\Workspace Visual Studio\Mercure (TP C# DotNet)\Mercure\obj\Debug\Mercure.csproj.CopyComplete
+E:\PROGRAMMATION\Workspace Visual Studio\Mercure (TP C# DotNet)\Mercure\obj\Debug\Mercure.exe
+E:\PROGRAMMATION\Workspace Visual Studio\Mercure (TP C# DotNet)\Mercure\obj\Debug\Mercure.pdb
