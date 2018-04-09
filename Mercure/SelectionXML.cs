@@ -41,8 +41,6 @@ namespace Mercure
 
         private void Btn_Integration_Click(object sender, EventArgs e)
         {
-            
-
             if (RBtn_MAJ.Checked == true && isPathEntered == true)
             {
                 XmlDocument xmldoc = new XmlDocument();
@@ -57,9 +55,9 @@ namespace Mercure
                 }
 
 
-                DBManager.GetInstance().AjouterListToDB(list, progressBar);
+                DBManager.GetInstance().AjouterListToDB(list, this);
 
-                this.Close();
+                //this.Close();
             }
             else if (RBtn_New_Integration.Checked == true && isPathEntered == true)
             {
@@ -71,6 +69,37 @@ namespace Mercure
             }
         }
 
-        
+
+
+        public void SetProgressBarMaximumValue(int value)
+        {
+            progressBar.Maximum = value;
+        }
+
+        public void SetProgressBarValue(int value)
+        {
+            progressBar.Value = value;
+        }
+
+        public void IncrementProgressBarValue()
+        {
+            progressBar.Value++;
+        }
+
+        public void AjouterErreur(String erreur)
+        {
+            ListViewItem item = new ListViewItem(erreur);
+            listViewErrors.Items.Add(item);
+        }
+
+        public void IncrementNbArticles()
+        {
+            labelNbArticles.Text = (Int32.Parse(labelNbArticles.Text) + 1).ToString();
+        }
+
+        public void ResetNbArticles()
+        {
+            labelNbArticles.Text = "0";
+        }
     }
 }
