@@ -23,10 +23,10 @@ namespace Mercure
             SelectionXML selectionXML = new SelectionXML();
             selectionXML.ShowDialog();
 
-            refreshListWiew();
+            RefreshListWiew();
         }
 
-        private void listView1_KeyDown(object sender, KeyEventArgs e)
+        private void ListView1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Delete && listView1.SelectedIndices.Count == 1)
             {
@@ -35,12 +35,12 @@ namespace Mercure
 
                 DBManager.GetInstance().DeleteArticle(refArticleToDelete);
 
-                refreshListWiew();
+                RefreshListWiew();
             }
 
             else if (e.KeyCode == Keys.F5)
             {
-                refreshListWiew();
+                RefreshListWiew();
             }
             else if(e.KeyCode == Keys.Enter)
             {
@@ -55,20 +55,20 @@ namespace Mercure
             }
         }
 
-        private void effacerLaBaseDeDonnéesToolStripMenuItem_Click(object sender, EventArgs e)
+        private void EffacerLaBaseDeDonnéesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if(MessageBox.Show("Attention, êtes-vous sur de vouloir effacer la base de données ?",
                 "Effacer la Base de données", MessageBoxButtons.YesNo , 
                 MessageBoxIcon.Warning) == DialogResult.Yes)
             {
                 DBManager.GetInstance().ViderDB();
-                refreshListWiew();
+                RefreshListWiew();
        
             }
 
         }
 
-        private void refreshListWiew()
+        private void RefreshListWiew()
         {
             listView1.Items.Clear();
 

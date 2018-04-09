@@ -106,7 +106,7 @@
             this.listView1.TabIndex = 2;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
-            this.listView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.listView1_KeyDown);
+            this.listView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ListView1_KeyDown);
             // 
             // columnHeader1
             // 
@@ -138,7 +138,7 @@
             this.effacerLaBaseDeDonnéesToolStripMenuItem.Name = "effacerLaBaseDeDonnéesToolStripMenuItem";
             this.effacerLaBaseDeDonnéesToolStripMenuItem.Size = new System.Drawing.Size(262, 26);
             this.effacerLaBaseDeDonnéesToolStripMenuItem.Text = "Effacer la Base de données";
-            this.effacerLaBaseDeDonnéesToolStripMenuItem.Click += new System.EventHandler(this.effacerLaBaseDeDonnéesToolStripMenuItem_Click);
+            this.effacerLaBaseDeDonnéesToolStripMenuItem.Click += new System.EventHandler(this.EffacerLaBaseDeDonnéesToolStripMenuItem_Click);
             // 
             // ajouterToolStripMenuItem
             // 

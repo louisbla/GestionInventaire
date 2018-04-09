@@ -52,7 +52,7 @@
             this.acceptButton.TabIndex = 0;
             this.acceptButton.Text = "Valider";
             this.acceptButton.UseVisualStyleBackColor = true;
-            this.acceptButton.Click += new System.EventHandler(this.acceptButton_Click);
+            this.acceptButton.Click += new System.EventHandler(this.AcceptButton_Click);
             // 
             // label5
             // 
@@ -113,7 +113,7 @@
             this.cancelButton.TabIndex = 1;
             this.cancelButton.Text = "Annuler";
             this.cancelButton.UseVisualStyleBackColor = true;
-            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
+            this.cancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // referenceTxtBox
             // 
