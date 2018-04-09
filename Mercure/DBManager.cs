@@ -62,8 +62,21 @@ namespace Mercure
                 return instance;
         }
 
+        public void ViderDB()
+        {
+            sqlConn = new SQLiteConnection("Data Source=Mercure.SQLite;");
+            sqlConn.Open();
+            SQLiteCommand sqlCmd = sqlConn.CreateCommand();
+            sqlCmd.CommandText = "Delete From Articles; Delete From Marques; Delete From SousFamilles; Delete From Familles";
+            SQLiteDataReader reader = sqlCmd.ExecuteReader();
+
+            reader.Close();
+            reader.Dispose();
+            sqlConn.Close();
+        }
+
         /// <summary>
-        /// Retourne la liste d'articles en DB, et met à jour la barre de progression
+        /// Ajoute la liste d'articles à la DB, et met à jour la barre de progression
         /// </summary>
         public void AjouterListToDB(List<string> list, SelectionXML fenetre)
         {

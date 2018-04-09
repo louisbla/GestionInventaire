@@ -37,9 +37,10 @@
             this.cancelButton = new System.Windows.Forms.Button();
             this.referenceTxtBox = new System.Windows.Forms.TextBox();
             this.descriptionTxtBox = new System.Windows.Forms.TextBox();
-            this.sousfamilleTxtBox = new System.Windows.Forms.TextBox();
-            this.MarqueTxtBox = new System.Windows.Forms.TextBox();
-            this.prixTxtBox = new System.Windows.Forms.TextBox();
+            this.sousFamilleCombo = new System.Windows.Forms.ComboBox();
+            this.marqueCombo = new System.Windows.Forms.ComboBox();
+            this.prixNum = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.prixNum)).BeginInit();
             this.SuspendLayout();
             // 
             // acceptButton
@@ -132,38 +133,37 @@
             this.descriptionTxtBox.Size = new System.Drawing.Size(314, 71);
             this.descriptionTxtBox.TabIndex = 8;
             // 
-            // sousfamilleTxtBox
+            // sousFamilleCombo
             // 
-            this.sousfamilleTxtBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.sousfamilleTxtBox.Location = new System.Drawing.Point(128, 157);
-            this.sousfamilleTxtBox.Name = "sousfamilleTxtBox";
-            this.sousfamilleTxtBox.Size = new System.Drawing.Size(314, 22);
-            this.sousfamilleTxtBox.TabIndex = 9;
+            this.sousFamilleCombo.FormattingEnabled = true;
+            this.sousFamilleCombo.Location = new System.Drawing.Point(128, 157);
+            this.sousFamilleCombo.Name = "sousFamilleCombo";
+            this.sousFamilleCombo.Size = new System.Drawing.Size(314, 24);
+            this.sousFamilleCombo.TabIndex = 9;
             // 
-            // MarqueTxtBox
+            // marqueCombo
             // 
-            this.MarqueTxtBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.MarqueTxtBox.Location = new System.Drawing.Point(130, 198);
-            this.MarqueTxtBox.Name = "MarqueTxtBox";
-            this.MarqueTxtBox.Size = new System.Drawing.Size(314, 22);
-            this.MarqueTxtBox.TabIndex = 10;
+            this.marqueCombo.FormattingEnabled = true;
+            this.marqueCombo.Location = new System.Drawing.Point(128, 198);
+            this.marqueCombo.Name = "marqueCombo";
+            this.marqueCombo.Size = new System.Drawing.Size(314, 24);
+            this.marqueCombo.TabIndex = 10;
             // 
-            // prixTxtBox
+            // prixNum
             // 
-            this.prixTxtBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.prixTxtBox.Location = new System.Drawing.Point(130, 243);
-            this.prixTxtBox.Name = "prixTxtBox";
-            this.prixTxtBox.Size = new System.Drawing.Size(314, 22);
-            this.prixTxtBox.TabIndex = 11;
+            this.prixNum.Location = new System.Drawing.Point(128, 246);
+            this.prixNum.Name = "prixNum";
+            this.prixNum.Size = new System.Drawing.Size(120, 22);
+            this.prixNum.TabIndex = 11;
             // 
             // ArticleEditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(464, 365);
-            this.Controls.Add(this.prixTxtBox);
-            this.Controls.Add(this.MarqueTxtBox);
-            this.Controls.Add(this.sousfamilleTxtBox);
+            this.Controls.Add(this.prixNum);
+            this.Controls.Add(this.marqueCombo);
+            this.Controls.Add(this.sousFamilleCombo);
             this.Controls.Add(this.descriptionTxtBox);
             this.Controls.Add(this.referenceTxtBox);
             this.Controls.Add(this.label5);
@@ -175,6 +175,7 @@
             this.Controls.Add(this.label3);
             this.Name = "ArticleEditForm";
             this.Text = "Editer un article";
+            ((System.ComponentModel.ISupportInitialize)(this.prixNum)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -190,8 +191,8 @@
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.TextBox referenceTxtBox;
         private System.Windows.Forms.TextBox descriptionTxtBox;
-        private System.Windows.Forms.TextBox sousfamilleTxtBox;
-        private System.Windows.Forms.TextBox MarqueTxtBox;
-        private System.Windows.Forms.TextBox prixTxtBox;
+        private System.Windows.Forms.ComboBox sousFamilleCombo;
+        private System.Windows.Forms.ComboBox marqueCombo;
+        private System.Windows.Forms.NumericUpDown prixNum;
     }
 }

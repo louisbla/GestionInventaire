@@ -61,7 +61,24 @@ namespace Mercure
             }
             else if (RBtn_New_Integration.Checked == true && isPathEntered == true)
             {
-                Txtbox_Path.Text = "New";
+                DBManager.GetInstance().ViderDB();
+
+                XmlDocument xmldoc = new XmlDocument();
+                xmldoc.Load(filename);
+
+                foreach (XmlNode node in xmldoc.DocumentElement.ChildNodes)
+                {
+                    foreach (XmlNode node2 in node)
+                    {
+                        list.Add(node2.InnerText);
+                    }
+                }
+
+
+                DBManager.GetInstance().AjouterListToDB(list, this);
+
+                //this.Close();
+
             }
             else
             {

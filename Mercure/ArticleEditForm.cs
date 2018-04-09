@@ -19,12 +19,16 @@ namespace Mercure
             //On récupère l'article correspondant à la référence
             Article article = DBManager.GetInstance().GetArticleFromReference(reference);
 
+            //On ajoute les données de la BDD aux combobox
+            sousFamilleCombo.Items.Add("rien");
+            marqueCombo.Items.Add("rien");
+
             //On modifie les textbox avec les données de l'article récupéré
             referenceTxtBox.Text = article.RefArticle;
             descriptionTxtBox.Text = article.Description;
-            sousfamilleTxtBox.Text = article.SousFamille;
-            MarqueTxtBox.Text = article.Marque;
-            prixTxtBox.Text = article.PrixHT.ToString();
+            sousFamilleCombo.Text = "rien";
+            marqueCombo.Text = "rien";
+            prixNum.Text = article.PrixHT.ToString();
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
@@ -36,6 +40,7 @@ namespace Mercure
         {
             //on récupère les textbox
             
+            //on vérifie que les données sont bonnes
 
             //on envoie les données à la base de données
 
