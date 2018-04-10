@@ -53,12 +53,116 @@ namespace Mercure
             return article;
         }
 
+        internal void AjouterMarqueToDB(string marque)
+        {
+            sqlConn = new SQLiteConnection("Data Source=Mercure.SQLite;");
+
+            SQLiteCommand sqlCmd = new SQLiteCommand("INSERT INTO Marques VALUES(@RefMarque, @Nom);", sqlConn);
+
+            int id = ReturnIdMax("Famille");
+            sqlCmd.Parameters.Add(new SQLiteParameter("@RefMarque", id + 1));
+            sqlCmd.Parameters.Add(new SQLiteParameter("@Nom", marque));
+
+            sqlCmd.Connection = sqlConn;
+            sqlConn.Open();
+
+            SQLiteTransaction trans = sqlConn.BeginTransaction();
+            try
+            {
+                Console.WriteLine(sqlCmd.ExecuteNonQuery() + " : " + sqlCmd.CommandText);
+            }
+            catch (SQLiteException e)
+            {
+                Console.WriteLine(sqlCmd.CommandText);
+                Console.WriteLine(e.Message);
+            }
+            trans.Commit();
+            sqlConn.Close();
+        }
+
+        internal void AjouterFamilleToDB(string famille)
+        {
+            sqlConn = new SQLiteConnection("Data Source=Mercure.SQLite;");
+
+            SQLiteCommand sqlCmd = new SQLiteCommand("INSERT INTO Familles VALUES(@RefFamille, @Nom);", sqlConn);
+
+            int id = ReturnIdMax("Famille");
+            sqlCmd.Parameters.Add(new SQLiteParameter("@RefFamille", id + 1));
+            sqlCmd.Parameters.Add(new SQLiteParameter("@Nom", famille));
+
+            sqlCmd.Connection = sqlConn;
+            sqlConn.Open();
+
+            SQLiteTransaction trans = sqlConn.BeginTransaction();
+            try
+            {
+                Console.WriteLine(sqlCmd.ExecuteNonQuery() + " : " + sqlCmd.CommandText);
+            }
+            catch (SQLiteException e)
+            {
+                Console.WriteLine(sqlCmd.CommandText);
+                Console.WriteLine(e.Message);
+            }
+            trans.Commit();
+            sqlConn.Close();
+        }
+
+        internal void AjouterSousFamilleToDB(string sousFamille, string famille)
+        {
+            sqlConn = new SQLiteConnection("Data Source=Mercure.SQLite;");
+
+            SQLiteCommand sqlCmd = new SQLiteCommand("INSERT INTO SousFamilles VALUES(@RefSousFamille, @RefFamille, @Nom);", sqlConn);
+
+            int id = ReturnIdMax("SousFamille");
+            int idFamille = ReturnID(famille, "Famille");
+            sqlCmd.Parameters.Add(new SQLiteParameter("@RefSousFamille", id+1));
+            sqlCmd.Parameters.Add(new SQLiteParameter("@RefFamille", idFamille));
+            sqlCmd.Parameters.Add(new SQLiteParameter("@Nom", sousFamille));
+
+            sqlCmd.Connection = sqlConn;
+            sqlConn.Open();
+
+            SQLiteTransaction trans = sqlConn.BeginTransaction();
+            try
+            {
+                Console.WriteLine(sqlCmd.ExecuteNonQuery() + " : " + sqlCmd.CommandText);
+            }
+            catch (SQLiteException e)
+            {
+                Console.WriteLine(sqlCmd.CommandText);
+                Console.WriteLine(e.Message);
+            }
+            trans.Commit();
+            sqlConn.Close();
+        }
+
         public String[] GetListMarques()
         {
             List<String> list = new List<String>();
 
             sqlConn.Open();
             SQLiteCommand sqlCmd = new SQLiteCommand("SELECT Nom FROM Marques", sqlConn);
+
+            SQLiteDataReader reader = sqlCmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                list.Add(reader.GetString(0));
+            }
+
+            reader.Close();
+            reader.Dispose();
+            sqlConn.Close();
+
+            return list.ToArray();
+        }
+
+        public String[] GetListFamilles()
+        {
+            List<String> list = new List<String>();
+
+            sqlConn.Open();
+            SQLiteCommand sqlCmd = new SQLiteCommand("SELECT Nom FROM Familles", sqlConn);
 
             SQLiteDataReader reader = sqlCmd.ExecuteReader();
 

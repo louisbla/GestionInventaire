@@ -81,5 +81,36 @@ namespace Mercure
                 listView1.Items.Add(itemArticle);
             }
         }
+
+        private void ArticleToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            ArticleEditForm form = new ArticleEditForm();
+            form.ShowDialog();
+            RefreshListWiew();
+        }
+
+        private void MarqueToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            AddMarqueForm form = new AddMarqueForm();
+            form.ShowDialog();
+            RefreshListWiew();
+        }
+
+        private void FamilleToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            AddFamilleForm form = new AddFamilleForm();
+            form.ShowDialog();
+        }
+
+        private void sousfamilleToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            AddSousFamilleForm form = new AddSousFamilleForm();
+            form.ShowDialog();
+        }
+
+        private void modifierArticleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine( e.ToString());
+        }
     }
 }

@@ -34,6 +34,21 @@ namespace Mercure
             prixNum.Text = article.PrixHT.ToString();
         }
 
+        public ArticleEditForm()
+        {
+            InitializeComponent();
+
+            this.Text = "Ajouter un nouvel article";
+            referenceTxtBox.Enabled = true;
+
+            prixNum.DecimalPlaces = 2;
+            prixNum.Increment = 0.01M;
+
+            //On ajoute les données de la BDD aux combobox
+            sousFamilleCombo.Items.AddRange(DBManager.GetInstance().GetListSousFamille());
+            marqueCombo.Items.AddRange(DBManager.GetInstance().GetListMarques());
+        }
+
         private void CancelButton_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -44,6 +59,10 @@ namespace Mercure
             //on récupère les textbox
             String reference = referenceTxtBox.Text;
             Article article = DBManager.GetInstance().GetArticleFromReference(reference);
+            if(article.RefArticle == null)
+            {
+                article.RefArticle = reference;
+            }
 
             article.Description = descriptionTxtBox.Text;
             article.SousFamille = sousFamilleCombo.Text;
