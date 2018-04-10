@@ -86,7 +86,7 @@ namespace Mercure
             sqlCmd.Parameters.Add(new SQLiteParameter("@Description", article.Description));
             sqlCmd.Parameters.Add(new SQLiteParameter("@idSousFamille", ReturnID(article.SousFamille, "SousFamille")));
             sqlCmd.Parameters.Add(new SQLiteParameter("@IdMarque", ReturnID(article.Marque, "Marque")));
-            sqlCmd.Parameters.Add(new SQLiteParameter("@Prix", article.PrixHT));
+            sqlCmd.Parameters.Add(new SQLiteParameter("@Prix", article.PrixHT.ToString()));
 
             sqlCmd.Connection = sqlConn;
             sqlConn.Open();
