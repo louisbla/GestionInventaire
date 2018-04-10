@@ -135,6 +135,7 @@
             // 
             // sousFamilleCombo
             // 
+            this.sousFamilleCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.sousFamilleCombo.FormattingEnabled = true;
             this.sousFamilleCombo.Location = new System.Drawing.Point(128, 157);
             this.sousFamilleCombo.Name = "sousFamilleCombo";
@@ -143,6 +144,8 @@
             // 
             // marqueCombo
             // 
+            this.marqueCombo.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.marqueCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.marqueCombo.FormattingEnabled = true;
             this.marqueCombo.Location = new System.Drawing.Point(128, 198);
             this.marqueCombo.Name = "marqueCombo";

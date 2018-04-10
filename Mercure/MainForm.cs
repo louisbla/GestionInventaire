@@ -51,6 +51,7 @@ namespace Mercure
 
                     ArticleEditForm form = new ArticleEditForm(refArticleToEdit);
                     form.ShowDialog();
+                    RefreshListWiew();
                 }
             }
         }
