@@ -23,8 +23,8 @@ namespace Mercure
             Article article = DBManager.GetInstance().GetArticleFromReference(reference);
 
             //On ajoute les données de la BDD aux combobox
-            sousFamilleCombo.Items.AddRange(DBManager.GetInstance().GetListSousFamille());
-            marqueCombo.Items.AddRange(DBManager.GetInstance().GetListMarques());
+            sousFamilleCombo.Items.AddRange(DBManager.GetInstance().GetSousFamilleNames());
+            marqueCombo.Items.AddRange(DBManager.GetInstance().GetMarquesNames());
 
             //On modifie les textbox avec les données de l'article récupéré
             referenceTxtBox.Text = article.RefArticle;
@@ -45,8 +45,8 @@ namespace Mercure
             prixNum.Increment = 0.01M;
 
             //On ajoute les données de la BDD aux combobox
-            sousFamilleCombo.Items.AddRange(DBManager.GetInstance().GetListSousFamille());
-            marqueCombo.Items.AddRange(DBManager.GetInstance().GetListMarques());
+            sousFamilleCombo.Items.AddRange(DBManager.GetInstance().GetSousFamilleNames());
+            marqueCombo.Items.AddRange(DBManager.GetInstance().GetMarquesNames());
         }
 
         private void CancelButton_Click(object sender, EventArgs e)

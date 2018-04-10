@@ -136,7 +136,117 @@ namespace Mercure
             sqlConn.Close();
         }
 
-        public String[] GetListMarques()
+        /// <summary>
+        /// Retourne la liste d'articles presents dans la DB
+        /// </summary>
+        public List<string[]> GetListArticles()
+        {
+            List<String[]> list = new List<string[]>();
+
+            sqlConn.Open();
+            SQLiteCommand sqlCmd = sqlConn.CreateCommand();
+            sqlCmd.CommandText = "SELECT a.Description, a.RefArticle, m.Nom as 'Marque', f.Nom as 'Famille', sf.Nom as 'Sous-famille', a.PrixHT FROM Articles a, Marques m, SousFamilles sf, Familles f WHERE a.RefMarque = m.RefMarque AND a.RefSousFamille = sf.RefSousFamille AND sf.RefFamille = f.RefFamille";
+            SQLiteDataReader reader = sqlCmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                String description = reader.GetString(0);
+                String refArticle = reader.GetString(1);
+                String marque = reader.GetString(2);
+                String famille = reader.GetString(3);
+                String sousFamille = reader.GetString(4);
+                String prix = reader.GetString(5);
+
+                String[] article = { description, refArticle, marque, famille, sousFamille, prix };
+                list.Add(article);
+            }
+
+            reader.Close();
+            reader.Dispose();
+            sqlConn.Close();
+
+            return list;
+        }
+
+        /// <summary>
+        /// Return a list of brands : { RefMarque, Nom }
+        /// </summary>
+        public List<String[]> GetListMarques()
+        {
+            List<String[]> list = new List<string[]>();
+
+            sqlConn.Open();
+            SQLiteCommand sqlCmd = new SQLiteCommand("SELECT RefMarque, Nom FROM Marques", sqlConn);
+
+            SQLiteDataReader reader = sqlCmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                String[] marque = { reader.GetInt32(0).ToString(), reader.GetString(1) };
+                list.Add(marque);
+            }
+
+            reader.Close();
+            reader.Dispose();
+            sqlConn.Close();
+
+            return list;
+        }
+
+        /// <summary>
+        /// Return a list of families : { RefFamille, Nom }
+        /// </summary>
+        public List<String[]> GetListFamilles()
+        {
+            List<String[]> list = new List<string[]>();
+
+            sqlConn.Open();
+            SQLiteCommand sqlCmd = new SQLiteCommand("SELECT RefFamille, Nom FROM Familles", sqlConn);
+
+            SQLiteDataReader reader = sqlCmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                String[] famille = { reader.GetInt32(0).ToString(), reader.GetString(1) };
+                list.Add(famille);
+            }
+
+            reader.Close();
+            reader.Dispose();
+            sqlConn.Close();
+
+            return list;
+        }
+
+        /// <summary>
+        /// Return a list of 'sous-familles : { RefSousFamille, Nom }
+        /// </summary>
+        public List<String[]> GetListSousFamilles()
+        {
+            List<String[]> list = new List<string[]>();
+
+            sqlConn.Open();
+            SQLiteCommand sqlCmd = new SQLiteCommand("SELECT sf.RefSousFamille, sf.Nom, f.Nom FROM Familles f, SousFamilles sf WHERE f.RefFamille = sf.RefFamille", sqlConn);
+
+            SQLiteDataReader reader = sqlCmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                String[] sousFamille = { reader.GetInt32(0).ToString(), reader.GetString(1), reader.GetString(2) };
+                list.Add(sousFamille);
+            }
+
+            reader.Close();
+            reader.Dispose();
+            sqlConn.Close();
+
+            return list;
+        }
+
+        /// <summary>
+        /// Returns the brand names in the database
+        /// </summary>
+        public String[] GetMarquesNames()
         {
             List<String> list = new List<String>();
 
@@ -157,7 +267,10 @@ namespace Mercure
             return list.ToArray();
         }
 
-        public String[] GetListFamilles()
+        /// <summary>
+        /// Return family names in the database
+        /// </summary>
+        public String[] GetFamilleNames()
         {
             List<String> list = new List<String>();
 
@@ -178,12 +291,45 @@ namespace Mercure
             return list.ToArray();
         }
 
+        /// <summary>
+        /// Return 'sous-famille' names in the database
+        /// </summary>
+        public String[] GetSousFamilleNames()
+        {
+            List<String> list = new List<String>();
+
+            sqlConn.Open();
+            SQLiteCommand sqlCmd = new SQLiteCommand("SELECT Nom FROM SousFamilles", sqlConn);
+
+            SQLiteDataReader reader = sqlCmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                list.Add(reader.GetString(0));
+            }
+
+            reader.Close();
+            reader.Dispose();
+            sqlConn.Close();
+
+            return list.ToArray();
+        }
+        
+        public static DBManager GetInstance()
+        {
+                if (instance == null)
+                {
+                    instance = new DBManager();
+                }
+                return instance;
+        }
+
         internal void AjouterArticleToDB(Article article)
         {
             DeleteArticle(article.RefArticle);
 
             sqlConn = new SQLiteConnection("Data Source=Mercure.SQLite;");
-            
+
             SQLiteCommand sqlCmd = new SQLiteCommand("INSERT INTO Articles VALUES(@RefArticle, @Description,@idSousFamille, @idMarque, @Prix,0);", sqlConn);
 
             sqlCmd.Parameters.Add(new SQLiteParameter("@RefArticle", article.RefArticle));
@@ -207,38 +353,6 @@ namespace Mercure
             }
             trans.Commit();
             sqlConn.Close();
-        }
-
-        public String[] GetListSousFamille()
-        {
-            List<String> list = new List<String>();
-
-            sqlConn.Open();
-            SQLiteCommand sqlCmd = new SQLiteCommand("SELECT Nom FROM SousFamilles", sqlConn);
-
-            SQLiteDataReader reader = sqlCmd.ExecuteReader();
-
-            while (reader.Read())
-            {
-                list.Add(reader.GetString(0));
-            }
-
-            reader.Close();
-            reader.Dispose();
-            sqlConn.Close();
-
-            return list.ToArray();
-        }
-
-
-
-        public static DBManager GetInstance()
-        {
-                if (instance == null)
-                {
-                    instance = new DBManager();
-                }
-                return instance;
         }
 
         public void ViderDB()
@@ -320,38 +434,6 @@ namespace Mercure
                 if(InsertQuery(query, fenetre))
                     fenetre.IncrementNbArticles();
             }
-        }
-
-        /// <summary>
-        /// Retourne la liste d'articles presents dans la DB
-        /// </summary>
-        public List<string[]> GetListFromDB()
-        {
-            List<String[]> list = new List<string[]>();
-
-            sqlConn.Open();
-            SQLiteCommand sqlCmd = sqlConn.CreateCommand();
-            sqlCmd.CommandText = "SELECT a.Description, a.RefArticle, m.Nom as 'Marque', f.Nom as 'Famille', sf.Nom as 'Sous-famille', a.PrixHT FROM Articles a, Marques m, SousFamilles sf, Familles f WHERE a.RefMarque = m.RefMarque AND a.RefSousFamille = sf.RefSousFamille AND sf.RefFamille = f.RefFamille";
-            SQLiteDataReader reader = sqlCmd.ExecuteReader();
-
-            while(reader.Read())
-            {
-                String description = reader.GetString(0);
-                String refArticle = reader.GetString(1);
-                String marque = reader.GetString(2);
-                String famille = reader.GetString(3);
-                String sousFamille = reader.GetString(4);
-                String prix = reader.GetString(5);
-
-                String[] article = { description, refArticle, marque, famille, sousFamille, prix };
-                list.Add(article);
-            }
-
-            reader.Close();
-            reader.Dispose();
-            sqlConn.Close();
-
-            return list;
         }
 
         private static bool InsertQuery(String query, SelectionXML fenetre)
@@ -442,7 +524,6 @@ namespace Mercure
             return id;
         }
         
-
         /// <summary>
         /// Supprime un article a partir d'une ref d'article
         /// </summary>
@@ -452,6 +533,22 @@ namespace Mercure
             sqlConn.Open();
             SQLiteCommand sqlCmd = sqlConn.CreateCommand();
             sqlCmd.CommandText = "Delete From Articles Where RefArticle = '" + refArticleToDelete + "'";
+            SQLiteDataReader reader = sqlCmd.ExecuteReader();
+
+            reader.Close();
+            reader.Dispose();
+            sqlConn.Close();
+        }
+
+        /// <summary>
+        /// Supprime une marque a partir d'une ref de marque
+        /// </summary>
+        internal void DeleteMarque(string refMarqueToDelete)
+        {
+            sqlConn = new SQLiteConnection("Data Source=Mercure.SQLite;");
+            sqlConn.Open();
+            SQLiteCommand sqlCmd = sqlConn.CreateCommand();
+            sqlCmd.CommandText = "Delete From Marques Where RefArticle = '" + refMarqueToDelete + "'";
             SQLiteDataReader reader = sqlCmd.ExecuteReader();
 
             reader.Close();

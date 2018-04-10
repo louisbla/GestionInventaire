@@ -16,7 +16,7 @@ namespace Mercure
         {
             InitializeComponent();
 
-            familleCombobox.Items.AddRange(DBManager.GetInstance().GetListFamilles());
+            familleCombobox.Items.AddRange(DBManager.GetInstance().GetFamilleNames());
         }
 
         private void cancelBtn_Click(object sender, EventArgs e)
