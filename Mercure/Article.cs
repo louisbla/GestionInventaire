@@ -13,16 +13,43 @@ namespace Mercure
         String sousFamille;
         String famille;
         String marque;
-        double prixHT;
+        float prixHT;
         int quantite;
 
-        public string Description { get => description; set => description = value; }
-        public string RefArticle { get => refArticle; set => refArticle = value; }
-        public string SousFamille { get => sousFamille; set => sousFamille = value; }
-        public string Famille { get => famille; set => famille = value; }
-        public string Marque { get => marque; set => marque = value; }
-        public double PrixHT { get => prixHT; set => prixHT = value; }
-        public int Quantite { get => quantite; set => quantite = value; }
-
+        public string Description
+        {
+            get { return description; }
+            set { description = value; }
+        }
+        public string RefArticle
+        {
+            get { return refArticle; }
+            set { refArticle = value; }
+        }
+        public string SousFamille
+        {
+            get { return sousFamille; }
+            set { sousFamille = value; }
+        }
+        public string Famille
+        {
+            get { return famille; }
+            set { famille = value; }
+        }
+        public string Marque
+        {
+            get { return marque; }
+            set { marque = value; }
+        }
+        public float PrixHT
+        {
+            get { return prixHT; }
+            set { prixHT = value; }
+        }
+        public int Quantite
+        {
+            get { return quantite; }
+            set { quantite = value; }
+        }
     }
 }
