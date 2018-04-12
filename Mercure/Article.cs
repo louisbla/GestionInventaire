@@ -13,7 +13,7 @@ namespace Mercure
         String sousFamille;
         String famille;
         String marque;
-        float prixHT;
+        double prixHT;
         int quantite;
 
         public string Description { get => description; set => description = value; }
@@ -21,7 +21,7 @@ namespace Mercure
         public string SousFamille { get => sousFamille; set => sousFamille = value; }
         public string Famille { get => famille; set => famille = value; }
         public string Marque { get => marque; set => marque = value; }
-        public float PrixHT { get => prixHT; set => prixHT = value; }
+        public double PrixHT { get => prixHT; set => prixHT = value; }
         public int Quantite { get => quantite; set => quantite = value; }
 
     }
