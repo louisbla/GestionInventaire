@@ -36,7 +36,7 @@
             // 
             // acceptBtn
             // 
-            this.acceptBtn.Location = new System.Drawing.Point(53, 199);
+            this.acceptBtn.Location = new System.Drawing.Point(27, 76);
             this.acceptBtn.Name = "acceptBtn";
             this.acceptBtn.Size = new System.Drawing.Size(75, 23);
             this.acceptBtn.TabIndex = 0;
@@ -46,7 +46,7 @@
             // 
             // cancelBtn
             // 
-            this.cancelBtn.Location = new System.Drawing.Point(184, 199);
+            this.cancelBtn.Location = new System.Drawing.Point(125, 76);
             this.cancelBtn.Name = "cancelBtn";
             this.cancelBtn.Size = new System.Drawing.Size(75, 23);
             this.cancelBtn.TabIndex = 1;
@@ -56,15 +56,15 @@
             // 
             // MarqueTxtbox
             // 
-            this.MarqueTxtbox.Location = new System.Drawing.Point(130, 63);
+            this.MarqueTxtbox.Location = new System.Drawing.Point(81, 33);
             this.MarqueTxtbox.Name = "MarqueTxtbox";
-            this.MarqueTxtbox.Size = new System.Drawing.Size(100, 22);
+            this.MarqueTxtbox.Size = new System.Drawing.Size(140, 22);
             this.MarqueTxtbox.TabIndex = 2;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(64, 63);
+            this.label1.Location = new System.Drawing.Point(24, 33);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(45, 17);
             this.label1.TabIndex = 3;
@@ -74,13 +74,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(345, 308);
+            this.ClientSize = new System.Drawing.Size(233, 122);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.MarqueTxtbox);
             this.Controls.Add(this.cancelBtn);
             this.Controls.Add(this.acceptBtn);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "AddMarqueForm";
-            this.Text = "AddMarqueForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Ajouter une marque";
             this.ResumeLayout(false);
             this.PerformLayout();
 

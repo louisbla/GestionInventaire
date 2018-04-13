@@ -67,13 +67,31 @@
       <DependentUpon>AddSousFamilleForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Article.cs" />
-    <Compile Include="ArticleEditForm.cs">
+    <Compile Include="AddArticleForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ArticleEditForm.Designer.cs">
-      <DependentUpon>ArticleEditForm.cs</DependentUpon>
+    <Compile Include="AddArticleForm.Designer.cs">
+      <DependentUpon>AddArticleForm.cs</DependentUpon>
     </Compile>
     <Compile Include="DBManager.cs" />
+    <Compile Include="ListFamilleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListFamilleForm.Designer.cs">
+      <DependentUpon>ListFamilleForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListMarqueForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListMarqueForm.Designer.cs">
+      <DependentUpon>ListMarqueForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListSousFamilleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListSousFamilleForm.Designer.cs">
+      <DependentUpon>ListSousFamilleForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,8 +115,17 @@
     <EmbeddedResource Include="AddSousFamilleForm.resx">
       <DependentUpon>AddSousFamilleForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ArticleEditForm.resx">
-      <DependentUpon>ArticleEditForm.cs</DependentUpon>
+    <EmbeddedResource Include="AddArticleForm.resx">
+      <DependentUpon>AddArticleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListFamilleForm.resx">
+      <DependentUpon>ListFamilleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListMarqueForm.resx">
+      <DependentUpon>ListMarqueForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListSousFamilleForm.resx">
+      <DependentUpon>ListSousFamilleForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

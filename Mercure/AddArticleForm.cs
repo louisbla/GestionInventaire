@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Mercure
 {
-    public partial class ArticleEditForm : Form
+    public partial class AddArticleForm : Form
     {
-        public ArticleEditForm(String reference)
+        public AddArticleForm(String reference)
         {
             InitializeComponent();
             
@@ -34,7 +34,7 @@ namespace Mercure
             prixNum.Text = article.PrixHT.ToString();
         }
 
-        public ArticleEditForm()
+        public AddArticleForm()
         {
             InitializeComponent();
 

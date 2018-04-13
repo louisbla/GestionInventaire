@@ -43,10 +43,6 @@ namespace Mercure
         private void RefreshListWiew()
         {
             articleListview.Items.Clear();
-            marqueListview.Items.Clear();
-            familleListview.Items.Clear();
-            sousfamilleListview.Items.Clear();
-
 
             List<String[]> listArticles = DBManager.GetInstance().GetListArticles();
             foreach (String[] article in listArticles)
@@ -54,34 +50,11 @@ namespace Mercure
                 ListViewItem itemArticle = new ListViewItem(article);
                 articleListview.Items.Add(itemArticle);
             }
-
-            List<String[]> listMarques = DBManager.GetInstance().GetListMarques();
-            foreach (String[] marque in listMarques)
-            {
-                ListViewItem item = new ListViewItem(marque);
-
-                marqueListview.Items.Add(item);
-            }
-
-            List<String[]> listFamilles = DBManager.GetInstance().GetListFamilles();
-            foreach (String[] famille in listFamilles)
-            {
-                ListViewItem item = new ListViewItem(famille);
-
-                familleListview.Items.Add(item);
-            }
-
-            List<String[]> listSousFamilles = DBManager.GetInstance().GetListSousFamilles();
-            foreach (String[] sousFamille in listSousFamilles)
-            {
-                ListViewItem item = new ListViewItem(sousFamille);
-                sousfamilleListview.Items.Add(item);
-            }
         }
 
         private void ArticleToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            ArticleEditForm form = new ArticleEditForm();
+            AddArticleForm form = new AddArticleForm();
             form.ShowDialog();
             RefreshListWiew();
         }
@@ -112,7 +85,7 @@ namespace Mercure
                 int SelectedIndex = articleListview.SelectedIndices[0];
                 String refArticleToEdit = this.articleListview.Items[SelectedIndex].SubItems[1].Text;
 
-                ArticleEditForm form = new ArticleEditForm(refArticleToEdit);
+                AddArticleForm form = new AddArticleForm(refArticleToEdit);
                 form.ShowDialog();
                 RefreshListWiew();
             }
@@ -148,7 +121,7 @@ namespace Mercure
                     int SelectedIndex = articleListview.SelectedIndices[0];
                     String refArticleToEdit = this.articleListview.Items[SelectedIndex].SubItems[1].Text;
 
-                    ArticleEditForm form = new ArticleEditForm(refArticleToEdit);
+                    AddArticleForm form = new AddArticleForm(refArticleToEdit);
                     form.ShowDialog();
                     RefreshListWiew();
                 }
@@ -165,50 +138,12 @@ namespace Mercure
                 int SelectedIndex = articleListview.SelectedIndices[0];
                 String refArticleToEdit = this.articleListview.Items[SelectedIndex].SubItems[1].Text;
 
-                ArticleEditForm form = new ArticleEditForm(refArticleToEdit);
+                AddArticleForm form = new AddArticleForm(refArticleToEdit);
                 form.ShowDialog();
                 RefreshListWiew();
             }
         }
 
-        /// <summary>
-        /// Gestion de l'appuie de touche sur le listview des marques
-        /// </summary>
-        private void MarqueListview_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Delete && marqueListview.SelectedIndices.Count == 1)
-            {
-                if(DialogResult.OK == MessageBox.Show("Attention, vous êtes sur le point de supprimer une marque, et tous les articles associés à cette marque. \n Etes vous sur de vouloir continuer ?", "Attention", MessageBoxButtons.OKCancel,MessageBoxIcon.Warning))
-                {
-                    //TODO : Supprimer tous les articles associés à la marque
-
-
-                    int SelectedIndex = marqueListview.SelectedIndices[0];
-                    String refMarqueToDelete = this.marqueListview.Items[SelectedIndex].SubItems[1].Text;
-
-                    DBManager.GetInstance().DeleteMarque(refMarqueToDelete);
-
-                    RefreshListWiew();
-                }
-            }
-
-            else if (e.KeyCode == Keys.F5)
-            {
-                RefreshListWiew();
-            }
-            else if (e.KeyCode == Keys.Enter)
-            {
-                if (marqueListview.SelectedIndices.Count == 1)
-                {
-                    int SelectedIndex = marqueListview.SelectedIndices[0];
-                    String refMarqueToEdit = this.marqueListview.Items[SelectedIndex].SubItems[1].Text;
-
-                    AddMarqueForm form = new AddMarqueForm(/*refMarqueToEdit*/);
-                    form.ShowDialog();
-                    RefreshListWiew();
-                }
-            }
-        }
 
         private void supprimerArticleToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -226,22 +161,22 @@ namespace Mercure
             }
         }
 
-        private void modifierMarqueToolStripMenuItem_Click(object sender, EventArgs e)
+        private void marquesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (articleListview.SelectedIndices.Count == 1)
-            {
-                int SelectedIndex = articleListview.SelectedIndices[0];
-                String refArticleToEdit = this.articleListview.Items[SelectedIndex].SubItems[1].Text;
-
-                ArticleEditForm form = new ArticleEditForm(refArticleToEdit);
-                form.ShowDialog();
-                RefreshListWiew();
-            }
+            ListMarqueForm form = new ListMarqueForm();
+            form.ShowDialog();
         }
 
-        private void supprimerMarqueToolStripMenuItem_Click(object sender, EventArgs e)
+        private void famillesToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            ListFamilleForm form = new ListFamilleForm();
+            form.ShowDialog();
+        }
 
+        private void sousFamillesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ListSousFamilleForm form = new ListSousFamilleForm();
+            form.ShowDialog();
         }
     }
 }

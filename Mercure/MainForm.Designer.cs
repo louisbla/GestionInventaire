@@ -47,8 +47,6 @@
             this.marqueToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.modifierArticleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.supprimerArticleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.articleTab = new System.Windows.Forms.TabPage();
             this.articleListview = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -56,31 +54,12 @@
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.marqueTab = new System.Windows.Forms.TabPage();
-            this.marqueListview = new System.Windows.Forms.ListView();
-            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.familleTab = new System.Windows.Forms.TabPage();
-            this.familleListview = new System.Windows.Forms.ListView();
-            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.sousFamilleTab = new System.Windows.Forms.TabPage();
-            this.sousfamilleListview = new System.Windows.Forms.ListView();
-            this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.marqueContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.ajouterToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.modifierMarqueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.supprimerMarqueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.marquesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.famillesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sousFamillesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.articleContextMenu.SuspendLayout();
-            this.tabControl1.SuspendLayout();
-            this.articleTab.SuspendLayout();
-            this.marqueTab.SuspendLayout();
-            this.familleTab.SuspendLayout();
-            this.sousFamilleTab.SuspendLayout();
-            this.marqueContextMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -88,7 +67,8 @@
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fichierToolStripMenuItem,
-            this.ajouterToolStripMenuItem});
+            this.ajouterToolStripMenuItem,
+            this.listeToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
@@ -231,30 +211,6 @@
             this.supprimerArticleToolStripMenuItem.Text = "Supprimer article";
             this.supprimerArticleToolStripMenuItem.Click += new System.EventHandler(this.supprimerArticleToolStripMenuItem_Click);
             // 
-            // tabControl1
-            // 
-            this.tabControl1.Controls.Add(this.articleTab);
-            this.tabControl1.Controls.Add(this.marqueTab);
-            this.tabControl1.Controls.Add(this.familleTab);
-            this.tabControl1.Controls.Add(this.sousFamilleTab);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 28);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1080, 402);
-            this.tabControl1.TabIndex = 2;
-            // 
-            // articleTab
-            // 
-            this.articleTab.Controls.Add(this.articleListview);
-            this.articleTab.Location = new System.Drawing.Point(4, 25);
-            this.articleTab.Name = "articleTab";
-            this.articleTab.Padding = new System.Windows.Forms.Padding(3);
-            this.articleTab.Size = new System.Drawing.Size(1072, 373);
-            this.articleTab.TabIndex = 0;
-            this.articleTab.Text = "Articles";
-            this.articleTab.UseVisualStyleBackColor = true;
-            // 
             // articleListview
             // 
             this.articleListview.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -268,16 +224,14 @@
             this.articleListview.Dock = System.Windows.Forms.DockStyle.Fill;
             this.articleListview.FullRowSelect = true;
             this.articleListview.GridLines = true;
-            this.articleListview.Location = new System.Drawing.Point(3, 3);
+            this.articleListview.Location = new System.Drawing.Point(0, 28);
             this.articleListview.Margin = new System.Windows.Forms.Padding(4);
             this.articleListview.MultiSelect = false;
             this.articleListview.Name = "articleListview";
-            this.articleListview.Size = new System.Drawing.Size(1066, 367);
-            this.articleListview.TabIndex = 3;
+            this.articleListview.Size = new System.Drawing.Size(1080, 402);
+            this.articleListview.TabIndex = 4;
             this.articleListview.UseCompatibleStateImageBehavior = false;
             this.articleListview.View = System.Windows.Forms.View.Details;
-            this.articleListview.DoubleClick += new System.EventHandler(this.ArticleListview_DoubleClick);
-            this.articleListview.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ArticleListview_KeyDown);
             // 
             // columnHeader1
             // 
@@ -304,175 +258,54 @@
             // 
             this.columnHeader6.Text = "PrixHT";
             // 
-            // marqueTab
+            // listeToolStripMenuItem
             // 
-            this.marqueTab.Controls.Add(this.marqueListview);
-            this.marqueTab.Location = new System.Drawing.Point(4, 25);
-            this.marqueTab.Name = "marqueTab";
-            this.marqueTab.Padding = new System.Windows.Forms.Padding(3);
-            this.marqueTab.Size = new System.Drawing.Size(1072, 373);
-            this.marqueTab.TabIndex = 1;
-            this.marqueTab.Text = "Marques";
-            this.marqueTab.UseVisualStyleBackColor = true;
+            this.listeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.marquesToolStripMenuItem,
+            this.famillesToolStripMenuItem,
+            this.sousFamillesToolStripMenuItem});
+            this.listeToolStripMenuItem.Name = "listeToolStripMenuItem";
+            this.listeToolStripMenuItem.Size = new System.Drawing.Size(51, 24);
+            this.listeToolStripMenuItem.Text = "Liste";
             // 
-            // marqueListview
+            // marquesToolStripMenuItem
             // 
-            this.marqueListview.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader7,
-            this.columnHeader8});
-            this.marqueListview.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.marqueListview.FullRowSelect = true;
-            this.marqueListview.GridLines = true;
-            this.marqueListview.Location = new System.Drawing.Point(3, 3);
-            this.marqueListview.MultiSelect = false;
-            this.marqueListview.Name = "marqueListview";
-            this.marqueListview.Size = new System.Drawing.Size(1066, 367);
-            this.marqueListview.TabIndex = 0;
-            this.marqueListview.UseCompatibleStateImageBehavior = false;
-            this.marqueListview.View = System.Windows.Forms.View.Details;
-            this.marqueListview.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MarqueListview_KeyDown);
+            this.marquesToolStripMenuItem.Name = "marquesToolStripMenuItem";
+            this.marquesToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.marquesToolStripMenuItem.Text = "Marques";
+            this.marquesToolStripMenuItem.Click += new System.EventHandler(this.marquesToolStripMenuItem_Click);
             // 
-            // columnHeader7
+            // famillesToolStripMenuItem
             // 
-            this.columnHeader7.Text = "RefMarque";
-            this.columnHeader7.Width = 138;
+            this.famillesToolStripMenuItem.Name = "famillesToolStripMenuItem";
+            this.famillesToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.famillesToolStripMenuItem.Text = "Familles";
+            this.famillesToolStripMenuItem.Click += new System.EventHandler(this.famillesToolStripMenuItem_Click);
             // 
-            // columnHeader8
+            // sousFamillesToolStripMenuItem
             // 
-            this.columnHeader8.Text = "Nom";
-            this.columnHeader8.Width = 157;
-            // 
-            // familleTab
-            // 
-            this.familleTab.Controls.Add(this.familleListview);
-            this.familleTab.Location = new System.Drawing.Point(4, 25);
-            this.familleTab.Name = "familleTab";
-            this.familleTab.Padding = new System.Windows.Forms.Padding(3);
-            this.familleTab.Size = new System.Drawing.Size(1072, 373);
-            this.familleTab.TabIndex = 2;
-            this.familleTab.Text = "Familles";
-            this.familleTab.UseVisualStyleBackColor = true;
-            // 
-            // familleListview
-            // 
-            this.familleListview.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader9,
-            this.columnHeader10});
-            this.familleListview.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.familleListview.FullRowSelect = true;
-            this.familleListview.GridLines = true;
-            this.familleListview.Location = new System.Drawing.Point(3, 3);
-            this.familleListview.MultiSelect = false;
-            this.familleListview.Name = "familleListview";
-            this.familleListview.Size = new System.Drawing.Size(1066, 367);
-            this.familleListview.TabIndex = 0;
-            this.familleListview.UseCompatibleStateImageBehavior = false;
-            this.familleListview.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader9
-            // 
-            this.columnHeader9.Text = "RefFamille";
-            this.columnHeader9.Width = 166;
-            // 
-            // columnHeader10
-            // 
-            this.columnHeader10.Text = "Nom";
-            this.columnHeader10.Width = 138;
-            // 
-            // sousFamilleTab
-            // 
-            this.sousFamilleTab.Controls.Add(this.sousfamilleListview);
-            this.sousFamilleTab.Location = new System.Drawing.Point(4, 25);
-            this.sousFamilleTab.Name = "sousFamilleTab";
-            this.sousFamilleTab.Padding = new System.Windows.Forms.Padding(3);
-            this.sousFamilleTab.Size = new System.Drawing.Size(1072, 373);
-            this.sousFamilleTab.TabIndex = 3;
-            this.sousFamilleTab.Text = "Sous familles";
-            this.sousFamilleTab.UseVisualStyleBackColor = true;
-            // 
-            // sousfamilleListview
-            // 
-            this.sousfamilleListview.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader11,
-            this.columnHeader12,
-            this.columnHeader13});
-            this.sousfamilleListview.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.sousfamilleListview.FullRowSelect = true;
-            this.sousfamilleListview.GridLines = true;
-            this.sousfamilleListview.Location = new System.Drawing.Point(3, 3);
-            this.sousfamilleListview.MultiSelect = false;
-            this.sousfamilleListview.Name = "sousfamilleListview";
-            this.sousfamilleListview.Size = new System.Drawing.Size(1066, 367);
-            this.sousfamilleListview.TabIndex = 0;
-            this.sousfamilleListview.UseCompatibleStateImageBehavior = false;
-            this.sousfamilleListview.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader11
-            // 
-            this.columnHeader11.Text = "RefSousFamille";
-            this.columnHeader11.Width = 137;
-            // 
-            // columnHeader12
-            // 
-            this.columnHeader12.Text = "Nom";
-            this.columnHeader12.Width = 113;
-            // 
-            // columnHeader13
-            // 
-            this.columnHeader13.Text = "Famille";
-            // 
-            // marqueContextMenu
-            // 
-            this.marqueContextMenu.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.marqueContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ajouterToolStripMenuItem1,
-            this.modifierMarqueToolStripMenuItem,
-            this.supprimerMarqueToolStripMenuItem});
-            this.marqueContextMenu.Name = "marqueContextMenu";
-            this.marqueContextMenu.Size = new System.Drawing.Size(211, 104);
-            // 
-            // ajouterToolStripMenuItem1
-            // 
-            this.ajouterToolStripMenuItem1.Name = "ajouterToolStripMenuItem1";
-            this.ajouterToolStripMenuItem1.Size = new System.Drawing.Size(210, 24);
-            this.ajouterToolStripMenuItem1.Text = "Ajouter";
-            // 
-            // modifierMarqueToolStripMenuItem
-            // 
-            this.modifierMarqueToolStripMenuItem.Name = "modifierMarqueToolStripMenuItem";
-            this.modifierMarqueToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
-            this.modifierMarqueToolStripMenuItem.Text = "Modifier marque";
-            this.modifierMarqueToolStripMenuItem.Click += new System.EventHandler(this.modifierMarqueToolStripMenuItem_Click);
-            // 
-            // supprimerMarqueToolStripMenuItem
-            // 
-            this.supprimerMarqueToolStripMenuItem.Name = "supprimerMarqueToolStripMenuItem";
-            this.supprimerMarqueToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
-            this.supprimerMarqueToolStripMenuItem.Text = "Supprimer marque";
-            this.supprimerMarqueToolStripMenuItem.Click += new System.EventHandler(this.supprimerMarqueToolStripMenuItem_Click);
+            this.sousFamillesToolStripMenuItem.Name = "sousFamillesToolStripMenuItem";
+            this.sousFamillesToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.sousFamillesToolStripMenuItem.Text = "Sous familles";
+            this.sousFamillesToolStripMenuItem.Click += new System.EventHandler(this.sousFamillesToolStripMenuItem_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1080, 452);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.articleListview);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gestion d\'inventaire";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ArticleListview_KeyDown);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.articleContextMenu.ResumeLayout(false);
-            this.tabControl1.ResumeLayout(false);
-            this.articleTab.ResumeLayout(false);
-            this.marqueTab.ResumeLayout(false);
-            this.familleTab.ResumeLayout(false);
-            this.sousFamilleTab.ResumeLayout(false);
-            this.marqueContextMenu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -498,8 +331,6 @@
         private System.Windows.Forms.ToolStripMenuItem sousfamilleToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem familleToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem marqueToolStripMenuItem1;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage articleTab;
         private System.Windows.Forms.ListView articleListview;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
@@ -507,22 +338,9 @@
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.ColumnHeader columnHeader6;
-        private System.Windows.Forms.TabPage marqueTab;
-        private System.Windows.Forms.TabPage familleTab;
-        private System.Windows.Forms.TabPage sousFamilleTab;
-        private System.Windows.Forms.ListView marqueListview;
-        private System.Windows.Forms.ColumnHeader columnHeader7;
-        private System.Windows.Forms.ColumnHeader columnHeader8;
-        private System.Windows.Forms.ListView familleListview;
-        private System.Windows.Forms.ColumnHeader columnHeader9;
-        private System.Windows.Forms.ColumnHeader columnHeader10;
-        private System.Windows.Forms.ListView sousfamilleListview;
-        private System.Windows.Forms.ColumnHeader columnHeader11;
-        private System.Windows.Forms.ColumnHeader columnHeader12;
-        private System.Windows.Forms.ColumnHeader columnHeader13;
-        private System.Windows.Forms.ContextMenuStrip marqueContextMenu;
-        private System.Windows.Forms.ToolStripMenuItem ajouterToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem modifierMarqueToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem supprimerMarqueToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem listeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem marquesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem famillesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sousFamillesToolStripMenuItem;
     }
 }

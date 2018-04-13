@@ -1,6 +1,6 @@
 ﻿namespace Mercure
 {
-    partial class ArticleEditForm
+    partial class AddArticleForm
     {
         /// <summary>
         /// Required designer variable.
@@ -46,9 +46,9 @@
             // acceptButton
             // 
             this.acceptButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.acceptButton.Location = new System.Drawing.Point(167, 302);
+            this.acceptButton.Location = new System.Drawing.Point(111, 302);
             this.acceptButton.Name = "acceptButton";
-            this.acceptButton.Size = new System.Drawing.Size(86, 35);
+            this.acceptButton.Size = new System.Drawing.Size(116, 35);
             this.acceptButton.TabIndex = 0;
             this.acceptButton.Text = "Valider";
             this.acceptButton.UseVisualStyleBackColor = true;
@@ -58,7 +58,7 @@
             // 
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(55, 246);
+            this.label5.Location = new System.Drawing.Point(53, 246);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(62, 17);
             this.label5.TabIndex = 6;
@@ -68,7 +68,7 @@
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(40, 27);
+            this.label1.Location = new System.Drawing.Point(38, 27);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(86, 17);
             this.label1.TabIndex = 2;
@@ -78,7 +78,7 @@
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(53, 198);
+            this.label4.Location = new System.Drawing.Point(51, 198);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(64, 17);
             this.label4.TabIndex = 5;
@@ -88,7 +88,7 @@
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(30, 70);
+            this.label2.Location = new System.Drawing.Point(28, 70);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(87, 17);
             this.label2.TabIndex = 3;
@@ -98,7 +98,7 @@
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(28, 157);
+            this.label3.Location = new System.Drawing.Point(26, 157);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(93, 17);
             this.label3.TabIndex = 4;
@@ -107,9 +107,9 @@
             // cancelButton
             // 
             this.cancelButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.cancelButton.Location = new System.Drawing.Point(274, 302);
+            this.cancelButton.Location = new System.Drawing.Point(255, 302);
             this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(75, 35);
+            this.cancelButton.Size = new System.Drawing.Size(121, 35);
             this.cancelButton.TabIndex = 1;
             this.cancelButton.Text = "Annuler";
             this.cancelButton.UseVisualStyleBackColor = true;
@@ -119,7 +119,7 @@
             // 
             this.referenceTxtBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.referenceTxtBox.Enabled = false;
-            this.referenceTxtBox.Location = new System.Drawing.Point(128, 27);
+            this.referenceTxtBox.Location = new System.Drawing.Point(126, 27);
             this.referenceTxtBox.Name = "referenceTxtBox";
             this.referenceTxtBox.Size = new System.Drawing.Size(314, 22);
             this.referenceTxtBox.TabIndex = 7;
@@ -127,7 +127,7 @@
             // descriptionTxtBox
             // 
             this.descriptionTxtBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.descriptionTxtBox.Location = new System.Drawing.Point(128, 70);
+            this.descriptionTxtBox.Location = new System.Drawing.Point(126, 70);
             this.descriptionTxtBox.Multiline = true;
             this.descriptionTxtBox.Name = "descriptionTxtBox";
             this.descriptionTxtBox.Size = new System.Drawing.Size(314, 71);
@@ -159,7 +159,7 @@
             this.prixNum.Size = new System.Drawing.Size(120, 22);
             this.prixNum.TabIndex = 11;
             // 
-            // ArticleEditForm
+            // AddArticleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -176,7 +176,12 @@
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label3);
-            this.Name = "ArticleEditForm";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(482, 412);
+            this.MinimumSize = new System.Drawing.Size(482, 412);
+            this.Name = "AddArticleForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Editer un article";
             ((System.ComponentModel.ISupportInitialize)(this.prixNum)).EndInit();
             this.ResumeLayout(false);
