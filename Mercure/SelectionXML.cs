@@ -26,7 +26,9 @@ namespace Mercure
             InitializeComponent();
         }
 
-
+        /// <summary>
+        /// Open a windows window to find a xml file
+        /// </summary>
         private void Btn_Parcourir_XML_Click(object sender, EventArgs e)
         {
             OpenFileDialog open = new OpenFileDialog();
@@ -39,6 +41,9 @@ namespace Mercure
             }
         }
 
+        /// <summary>
+        /// Add xml data to the DB
+        /// </summary>
         private void Btn_Integration_Click(object sender, EventArgs e)
         {
             listViewErrors.Items.Clear();
