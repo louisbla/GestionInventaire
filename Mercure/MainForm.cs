@@ -170,14 +170,18 @@ namespace Mercure
         {
             if (e.KeyCode == Keys.Delete && marqueListview.SelectedIndices.Count == 1)
             {
+                if(DialogResult.OK == MessageBox.Show("Attention, vous êtes sur le point de supprimer une marque, et tous les articles associés à cette marque. \n Etes vous sur de vouloir continuer ?", "Attention", MessageBoxButtons.OKCancel,MessageBoxIcon.Warning))
+                {
+                    //TODO : Supprimer tous les articles associés à la marque
+
+
                     int SelectedIndex = marqueListview.SelectedIndices[0];
                     String refMarqueToDelete = this.marqueListview.Items[SelectedIndex].SubItems[1].Text;
 
                     DBManager.GetInstance().DeleteMarque(refMarqueToDelete);
 
                     RefreshListWiew();
-                
-
+                }
             }
 
             else if (e.KeyCode == Keys.F5)
