@@ -29,6 +29,8 @@ namespace Mercure
             Article article = new Article();
 
             sqlConn.Open();
+
+            //Requête 
             SQLiteCommand sqlCmd = new SQLiteCommand("SELECT a.Description, a.RefArticle, m.Nom as 'Marque', f.Nom as 'Famille', sf.Nom as 'Sous-famille', a.PrixHT FROM Articles a, Marques m, SousFamilles sf, Familles f WHERE a.RefMarque = m.RefMarque AND a.RefSousFamille = sf.RefSousFamille AND sf.RefFamille = f.RefFamille AND a.RefArticle = @ref", sqlConn);
             SQLiteParameter param = new SQLiteParameter("@ref", reference);
             sqlCmd.Parameters.Add(param);
