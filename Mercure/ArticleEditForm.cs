@@ -23,8 +23,8 @@ namespace Mercure
             Article article = DBManager.GetInstance().GetArticleFromReference(reference);
 
             //On ajoute les données de la BDD aux combobox
-            sousFamilleCombo.Items.AddRange(DBManager.GetInstance().GetListSousFamille());
-            marqueCombo.Items.AddRange(DBManager.GetInstance().GetListMarques());
+            sousFamilleCombo.Items.AddRange(DBManager.GetInstance().GetSousFamilleNames());
+            marqueCombo.Items.AddRange(DBManager.GetInstance().GetMarquesNames());
 
             //On modifie les textbox avec les données de l'article récupéré
             referenceTxtBox.Text = article.RefArticle;
@@ -32,6 +32,21 @@ namespace Mercure
             sousFamilleCombo.Text = article.SousFamille;
             marqueCombo.Text = article.Marque;
             prixNum.Text = article.PrixHT.ToString();
+        }
+
+        public ArticleEditForm()
+        {
+            InitializeComponent();
+
+            this.Text = "Ajouter un nouvel article";
+            referenceTxtBox.Enabled = true;
+
+            prixNum.DecimalPlaces = 2;
+            prixNum.Increment = 0.01M;
+
+            //On ajoute les données de la BDD aux combobox
+            sousFamilleCombo.Items.AddRange(DBManager.GetInstance().GetSousFamilleNames());
+            marqueCombo.Items.AddRange(DBManager.GetInstance().GetMarquesNames());
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
@@ -44,6 +59,10 @@ namespace Mercure
             //on récupère les textbox
             String reference = referenceTxtBox.Text;
             Article article = DBManager.GetInstance().GetArticleFromReference(reference);
+            if(article.RefArticle == null)
+            {
+                article.RefArticle = reference;
+            }
 
             article.Description = descriptionTxtBox.Text;
             article.SousFamille = sousFamilleCombo.Text;
