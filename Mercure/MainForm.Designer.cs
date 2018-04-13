@@ -69,6 +69,10 @@
             this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.marqueContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.ajouterToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.modifierMarqueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.supprimerMarqueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.articleContextMenu.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -76,6 +80,7 @@
             this.marqueTab.SuspendLayout();
             this.familleTab.SuspendLayout();
             this.sousFamilleTab.SuspendLayout();
+            this.marqueContextMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -224,6 +229,7 @@
             this.supprimerArticleToolStripMenuItem.Name = "supprimerArticleToolStripMenuItem";
             this.supprimerArticleToolStripMenuItem.Size = new System.Drawing.Size(192, 24);
             this.supprimerArticleToolStripMenuItem.Text = "Supprimer article";
+            this.supprimerArticleToolStripMenuItem.Click += new System.EventHandler(this.supprimerArticleToolStripMenuItem_Click);
             // 
             // tabControl1
             // 
@@ -415,6 +421,36 @@
             // 
             this.columnHeader13.Text = "Famille";
             // 
+            // marqueContextMenu
+            // 
+            this.marqueContextMenu.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.marqueContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ajouterToolStripMenuItem1,
+            this.modifierMarqueToolStripMenuItem,
+            this.supprimerMarqueToolStripMenuItem});
+            this.marqueContextMenu.Name = "marqueContextMenu";
+            this.marqueContextMenu.Size = new System.Drawing.Size(211, 104);
+            // 
+            // ajouterToolStripMenuItem1
+            // 
+            this.ajouterToolStripMenuItem1.Name = "ajouterToolStripMenuItem1";
+            this.ajouterToolStripMenuItem1.Size = new System.Drawing.Size(210, 24);
+            this.ajouterToolStripMenuItem1.Text = "Ajouter";
+            // 
+            // modifierMarqueToolStripMenuItem
+            // 
+            this.modifierMarqueToolStripMenuItem.Name = "modifierMarqueToolStripMenuItem";
+            this.modifierMarqueToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.modifierMarqueToolStripMenuItem.Text = "Modifier marque";
+            this.modifierMarqueToolStripMenuItem.Click += new System.EventHandler(this.modifierMarqueToolStripMenuItem_Click);
+            // 
+            // supprimerMarqueToolStripMenuItem
+            // 
+            this.supprimerMarqueToolStripMenuItem.Name = "supprimerMarqueToolStripMenuItem";
+            this.supprimerMarqueToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.supprimerMarqueToolStripMenuItem.Text = "Supprimer marque";
+            this.supprimerMarqueToolStripMenuItem.Click += new System.EventHandler(this.supprimerMarqueToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -436,6 +472,7 @@
             this.marqueTab.ResumeLayout(false);
             this.familleTab.ResumeLayout(false);
             this.sousFamilleTab.ResumeLayout(false);
+            this.marqueContextMenu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -483,5 +520,9 @@
         private System.Windows.Forms.ColumnHeader columnHeader11;
         private System.Windows.Forms.ColumnHeader columnHeader12;
         private System.Windows.Forms.ColumnHeader columnHeader13;
+        private System.Windows.Forms.ContextMenuStrip marqueContextMenu;
+        private System.Windows.Forms.ToolStripMenuItem ajouterToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem modifierMarqueToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem supprimerMarqueToolStripMenuItem;
     }
 }

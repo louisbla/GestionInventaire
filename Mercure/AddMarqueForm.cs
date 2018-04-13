@@ -12,6 +12,7 @@ namespace Mercure
 {
     public partial class AddMarqueForm : Form
     {
+
         public AddMarqueForm()
         {
             InitializeComponent();

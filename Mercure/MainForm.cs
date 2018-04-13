@@ -107,7 +107,15 @@ namespace Mercure
 
         private void ModifierArticleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Console.WriteLine( e.ToString());
+            if (articleListview.SelectedIndices.Count == 1)
+            {
+                int SelectedIndex = articleListview.SelectedIndices[0];
+                String refArticleToEdit = this.articleListview.Items[SelectedIndex].SubItems[1].Text;
+
+                ArticleEditForm form = new ArticleEditForm(refArticleToEdit);
+                form.ShowDialog();
+                RefreshListWiew();
+            }
         }
 
         /// <summary>
@@ -190,16 +198,50 @@ namespace Mercure
             }
             else if (e.KeyCode == Keys.Enter)
             {
-                if (articleListview.SelectedIndices.Count == 1)
+                if (marqueListview.SelectedIndices.Count == 1)
                 {
-                    int SelectedIndex = articleListview.SelectedIndices[0];
-                    String refArticleToEdit = this.articleListview.Items[SelectedIndex].SubItems[1].Text;
+                    int SelectedIndex = marqueListview.SelectedIndices[0];
+                    String refMarqueToEdit = this.marqueListview.Items[SelectedIndex].SubItems[1].Text;
 
-                    ArticleEditForm form = new ArticleEditForm(refArticleToEdit);
+                    AddMarqueForm form = new AddMarqueForm(/*refMarqueToEdit*/);
                     form.ShowDialog();
                     RefreshListWiew();
                 }
             }
+        }
+
+        private void supprimerArticleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (articleListview.SelectedIndices.Count == 1)
+            {
+                if (articleListview.SelectedIndices.Count == 1)
+                {
+                    int SelectedIndex = articleListview.SelectedIndices[0];
+                    String refArticleToDelete = this.articleListview.Items[SelectedIndex].SubItems[1].Text;
+
+                    DBManager.GetInstance().DeleteArticle(refArticleToDelete);
+
+                    RefreshListWiew();
+                }
+            }
+        }
+
+        private void modifierMarqueToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (articleListview.SelectedIndices.Count == 1)
+            {
+                int SelectedIndex = articleListview.SelectedIndices[0];
+                String refArticleToEdit = this.articleListview.Items[SelectedIndex].SubItems[1].Text;
+
+                ArticleEditForm form = new ArticleEditForm(refArticleToEdit);
+                form.ShowDialog();
+                RefreshListWiew();
+            }
+        }
+
+        private void supprimerMarqueToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
