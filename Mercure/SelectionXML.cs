@@ -41,6 +41,8 @@ namespace Mercure
 
         private void Btn_Integration_Click(object sender, EventArgs e)
         {
+            listViewErrors.Items.Clear();
+
             if (RBtn_MAJ.Checked == true && isPathEntered == true)
             {
                 XmlDocument xmldoc = new XmlDocument();
