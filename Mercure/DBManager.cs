@@ -24,6 +24,11 @@ namespace Mercure
             return sqlConn;
         }
 
+        /// <summary>
+        /// Get an article thanks to his reference
+        /// </summary>
+        /// <param name="reference">reference (ID) of the article</param>
+        /// <returns>Returns an object Article</returns>
         public Article GetArticleFromReference(String reference)
         {
             Article article = new Article();
@@ -55,6 +60,10 @@ namespace Mercure
             return article;
         }
 
+        /// <summary>
+        /// Add a brand to the DB
+        /// </summary>
+        /// <param name="marque">brand name we want to add</param>
         internal void AjouterMarqueToDB(string marque)
         {
             sqlConn = new SQLiteConnection("Data Source=Mercure.SQLite;");
@@ -82,6 +91,10 @@ namespace Mercure
             sqlConn.Close();
         }
 
+        /// <summary>
+        /// Add a family to the DB
+        /// </summary>
+        /// <param name="famille">Family name we want to add</param>
         internal void AjouterFamilleToDB(string famille)
         {
             sqlConn = new SQLiteConnection("Data Source=Mercure.SQLite;");
@@ -109,6 +122,11 @@ namespace Mercure
             sqlConn.Close();
         }
 
+        /// <summary>
+        /// Add a 'sous-famille' to the DB
+        /// </summary>
+        /// <param name="sousFamille">'sous-famille' name we want to add</param>
+        /// <param name="famille">Family name to which the 'sous-famille' belongs</param>
         internal void AjouterSousFamilleToDB(string sousFamille, string famille)
         {
             sqlConn = new SQLiteConnection("Data Source=Mercure.SQLite;");
@@ -139,7 +157,7 @@ namespace Mercure
         }
 
         /// <summary>
-        /// Retourne la liste d'articles presents dans la DB
+        /// Return a list of articles : { RedfArcticle, description,marque,famille,sousFamille,prix }
         /// </summary>
         public List<string[]> GetListArticles()
         {
@@ -221,7 +239,7 @@ namespace Mercure
         }
 
         /// <summary>
-        /// Return a list of 'sous-familles : { RefSousFamille, Nom }
+        /// Return a list of 'sous-familles' : { RefSousFamille, Nom }
         /// </summary>
         public List<String[]> GetListSousFamilles()
         {
@@ -326,6 +344,10 @@ namespace Mercure
                 return instance;
         }
 
+        /// <summary>
+        /// Add an article to the DB
+        /// </summary>
+        /// <param name="article">article to add</param>
         internal void AjouterArticleToDB(Article article)
         {
             DeleteArticle(article.RefArticle);
@@ -357,6 +379,9 @@ namespace Mercure
             sqlConn.Close();
         }
 
+        /// <summary>
+        /// Empty the DB, delete all rows.
+        /// </summary>
         public void ViderDB()
         {
             sqlConn = new SQLiteConnection("Data Source=Mercure.SQLite;");
@@ -371,8 +396,10 @@ namespace Mercure
         }
 
         /// <summary>
-        /// Ajoute la liste d'articles à la DB, et met à jour la barre de progression
+        /// Add an article list to the DB and update progression bar
         /// </summary>
+        /// <param name="list"> Arcticle list</param>
+        /// <param name="fenetre">Window where the progression bar is</param>
         public void AjouterListToDB(List<string> list, SelectionXML fenetre)
         {
             fenetre.ResetNbArticles();
@@ -438,6 +465,12 @@ namespace Mercure
             }
         }
 
+        /// <summary>
+        /// Execute an insertion Query
+        /// </summary>
+        /// <param name="query">Query to execute</param>
+        /// <param name="fenetre">Window in which the listView error will be modified</param>
+        /// <returns></returns>
         private static bool InsertQuery(String query, SelectionXML fenetre)
         {
             bool isAdded = false;
@@ -465,8 +498,10 @@ namespace Mercure
         }
 
         /// <summary>
-        /// Le nom de la classe doit être entré sans 's'
+        /// Return the max ID of the table 
         /// </summary>
+        /// <param name="classe">Table concerned. She has to be entered without 's' at the end</param>
+        /// <returns> Return an the ID max as int</returns>
         private static int ReturnIdMax(String classe)
         {
             int id;
@@ -497,8 +532,11 @@ namespace Mercure
         }
 
         /// <summary>
-        /// Le nom de la classe doit être entré sans 's'
+        /// Return the ID of the object of the table.
         /// </summary>
+        /// <param name="objet">Object we want to know his ID</param>
+        /// <param name="classe">Table in which the table is.</param>
+        /// <returns>Return an the ID as int</returns>
         private static int ReturnID(String objet, String classe)
         {
             int id;
@@ -527,8 +565,9 @@ namespace Mercure
         }
         
         /// <summary>
-        /// Supprime un article a partir d'une ref d'article
+        /// Delete an article from the DB
         /// </summary>
+        /// <param name="refArticleToDelete">The reference (ID) of the article we want to delete</param>
         public void DeleteArticle(String refArticleToDelete)
         {
             sqlConn = new SQLiteConnection("Data Source=Mercure.SQLite;");
@@ -543,8 +582,9 @@ namespace Mercure
         }
 
         /// <summary>
-        /// Supprime une marque a partir d'une ref de marque
+        /// Delete an brand from the DB
         /// </summary>
+        /// <param name="refMarqueToDelete">The reference (ID) of the brand we want to delete</param>
         internal void DeleteMarque(string refMarqueToDelete)
         {
             sqlConn = new SQLiteConnection("Data Source=Mercure.SQLite;");
