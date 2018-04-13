@@ -36,10 +36,10 @@
             this.RBtn_New_Integration = new System.Windows.Forms.RadioButton();
             this.RBtn_MAJ = new System.Windows.Forms.RadioButton();
             this.listViewErrors = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.labelNbArticles = new System.Windows.Forms.Label();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -121,12 +121,18 @@
             // 
             this.listViewErrors.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1});
+            this.listViewErrors.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
             this.listViewErrors.Location = new System.Drawing.Point(6, 21);
             this.listViewErrors.Name = "listViewErrors";
             this.listViewErrors.Size = new System.Drawing.Size(1105, 199);
             this.listViewErrors.TabIndex = 8;
             this.listViewErrors.UseCompatibleStateImageBehavior = false;
             this.listViewErrors.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Erreur";
+            this.columnHeader1.Width = 1200;
             // 
             // groupBox1
             // 
@@ -155,11 +161,6 @@
             this.labelNbArticles.Size = new System.Drawing.Size(16, 17);
             this.labelNbArticles.TabIndex = 13;
             this.labelNbArticles.Text = "0";
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Erreur";
-            this.columnHeader1.Width = 1200;
             // 
             // SelectionXML
             // 
