@@ -23,7 +23,7 @@ namespace Mercure
             SelectionXML selectionXML = new SelectionXML();
             selectionXML.ShowDialog();
 
-            RefreshListWiew();
+            RefreshListView();
         }
 
 
@@ -34,13 +34,13 @@ namespace Mercure
                 MessageBoxIcon.Warning) == DialogResult.Yes)
             {
                 DBManager.GetInstance().ViderDB();
-                RefreshListWiew();
+                RefreshListView();
        
             }
 
         }
 
-        private void RefreshListWiew()
+        private void RefreshListView()
         {
             articleListview.Items.Clear();
 
@@ -52,18 +52,11 @@ namespace Mercure
             }
         }
 
-        private void ArticleToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            AddArticleForm form = new AddArticleForm();
-            form.ShowDialog();
-            RefreshListWiew();
-        }
-
         private void MarqueToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             AddMarqueForm form = new AddMarqueForm();
             form.ShowDialog();
-            RefreshListWiew();
+            RefreshListView();
         }
 
         private void FamilleToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -87,7 +80,7 @@ namespace Mercure
 
                 AddArticleForm form = new AddArticleForm(refArticleToEdit);
                 form.ShowDialog();
-                RefreshListWiew();
+                RefreshListView();
             }
         }
 
@@ -105,14 +98,14 @@ namespace Mercure
 
                     DBManager.GetInstance().DeleteArticle(refArticleToDelete);
 
-                    RefreshListWiew();
+                    RefreshListView();
                 }
 
             }
 
             else if (e.KeyCode == Keys.F5)
             {
-                RefreshListWiew();
+                RefreshListView();
             }
             else if (e.KeyCode == Keys.Enter)
             {
@@ -123,27 +116,10 @@ namespace Mercure
 
                     AddArticleForm form = new AddArticleForm(refArticleToEdit);
                     form.ShowDialog();
-                    RefreshListWiew();
+                    RefreshListView();
                 }
             }
         }
-
-        /// <summary>
-        /// Gestion du double click sur le listview des articles
-        /// </summary>
-        private void ArticleListview_DoubleClick(object sender, EventArgs e)
-        {
-            if (articleListview.SelectedIndices.Count == 1)
-            {
-                int SelectedIndex = articleListview.SelectedIndices[0];
-                String refArticleToEdit = this.articleListview.Items[SelectedIndex].SubItems[1].Text;
-
-                AddArticleForm form = new AddArticleForm(refArticleToEdit);
-                form.ShowDialog();
-                RefreshListWiew();
-            }
-        }
-
 
         private void supprimerArticleToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -156,7 +132,7 @@ namespace Mercure
 
                     DBManager.GetInstance().DeleteArticle(refArticleToDelete);
 
-                    RefreshListWiew();
+                    RefreshListView();
                 }
             }
         }
@@ -177,6 +153,29 @@ namespace Mercure
         {
             ListSousFamilleForm form = new ListSousFamilleForm();
             form.ShowDialog();
+        }
+
+        /// <summary>
+        /// Gestion du double click sur le listview des articles
+        /// </summary>
+        private void articleListview_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (articleListview.SelectedIndices.Count == 1)
+            {
+                int SelectedIndex = articleListview.SelectedIndices[0];
+                String refArticleToEdit = this.articleListview.Items[SelectedIndex].SubItems[1].Text;
+
+                AddArticleForm form = new AddArticleForm(refArticleToEdit);
+                form.ShowDialog();
+                RefreshListView();
+            }
+        }
+
+        private void ajouterArticleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddArticleForm form = new AddArticleForm();
+            form.ShowDialog();
+            RefreshListView();
         }
     }
 }

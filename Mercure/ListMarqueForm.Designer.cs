@@ -44,6 +44,7 @@
             this.marqueListview.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader7,
             this.columnHeader8});
+            this.marqueListview.ContextMenuStrip = this.contextMenuStrip1;
             this.marqueListview.Dock = System.Windows.Forms.DockStyle.Fill;
             this.marqueListview.FullRowSelect = true;
             this.marqueListview.GridLines = true;
@@ -54,6 +55,7 @@
             this.marqueListview.TabIndex = 1;
             this.marqueListview.UseCompatibleStateImageBehavior = false;
             this.marqueListview.View = System.Windows.Forms.View.Details;
+            this.marqueListview.DoubleClick += new System.EventHandler(this.modifierToolStripMenuItem_Click);
             this.marqueListview.KeyDown += new System.Windows.Forms.KeyEventHandler(this.marqueListview_KeyDown);
             // 
             // columnHeader7
@@ -74,13 +76,14 @@
             this.modifierToolStripMenuItem,
             this.supprimerToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(211, 104);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(211, 76);
             // 
             // ajouterUneMarqueToolStripMenuItem
             // 
             this.ajouterUneMarqueToolStripMenuItem.Name = "ajouterUneMarqueToolStripMenuItem";
             this.ajouterUneMarqueToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
             this.ajouterUneMarqueToolStripMenuItem.Text = "Ajouter une marque";
+            this.ajouterUneMarqueToolStripMenuItem.Click += new System.EventHandler(this.ajouterUneMarqueToolStripMenuItem_Click);
             // 
             // modifierToolStripMenuItem
             // 
@@ -103,7 +106,8 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.marqueListview);
             this.Name = "ListMarqueForm";
-            this.Text = "ListMarqueForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Liste des marques";
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 

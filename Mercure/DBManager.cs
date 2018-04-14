@@ -24,6 +24,57 @@ namespace Mercure
             return sqlConn;
         }
 
+        public Marque GetMarqueByRef(string refMarqueToEdit)
+        {
+            Marque marque = new Marque();
+
+            sqlConn.Open();
+            SQLiteCommand sqlCmd = new SQLiteCommand("SELECT RefMarque, Nom FROM Marques WHERE RefMarque = @RefMarque", sqlConn);
+            sqlCmd.Parameters.Add(new SQLiteParameter("@RefMarque", refMarqueToEdit));
+
+            SQLiteDataReader reader = sqlCmd.ExecuteReader();
+
+            if(reader.Read())
+            {
+                marque.RefMarque = reader.GetInt32(0);
+                marque.Nom = reader.GetString(1);
+            }
+
+            reader.Close();
+            reader.Dispose();
+            sqlConn.Close();
+
+            return marque;
+        }
+
+        internal void EditMarque(Marque marque, string nom)
+        {
+            sqlConn = new SQLiteConnection("Data Source=Mercure.SQLite;");
+
+            SQLiteCommand sqlCmd = new SQLiteCommand("UPDATE Marques SET RefMarque = @RefMarque, Nom = @Nom WHERE RefMarque = @RefMarque;", sqlConn);
+
+            sqlCmd.Parameters.Add(new SQLiteParameter("@RefMarque", marque.RefMarque));
+            sqlCmd.Parameters.Add(new SQLiteParameter("@Nom", nom));
+
+            Console.WriteLine(sqlCmd.CommandText);
+
+            sqlCmd.Connection = sqlConn;
+            sqlConn.Open();
+
+            SQLiteTransaction trans = sqlConn.BeginTransaction();
+            try
+            {
+                Console.WriteLine(sqlCmd.ExecuteNonQuery() + " : " + sqlCmd.CommandText);
+            }
+            catch (SQLiteException e)
+            {
+                Console.WriteLine(sqlCmd.CommandText);
+                Console.WriteLine(e.Message);
+            }
+            trans.Commit();
+            sqlConn.Close();
+        }
+
         /// <summary>
         /// Get an article thanks to his reference
         /// </summary>
@@ -70,7 +121,7 @@ namespace Mercure
 
             SQLiteCommand sqlCmd = new SQLiteCommand("INSERT INTO Marques VALUES(@RefMarque, @Nom);", sqlConn);
 
-            int id = ReturnIdMax("Famille");
+            int id = ReturnIdMax("Marque");
             sqlCmd.Parameters.Add(new SQLiteParameter("@RefMarque", id + 1));
             sqlCmd.Parameters.Add(new SQLiteParameter("@Nom", marque));
 
@@ -119,6 +170,24 @@ namespace Mercure
                 Console.WriteLine(e.Message);
             }
             trans.Commit();
+            sqlConn.Close();
+        }
+
+
+        /// <summary>
+        /// Delete all articles related to a brand
+        /// </summary>
+        public void DeleteArticlesByMarque(string refMarqueToDelete)
+        {
+            sqlConn = new SQLiteConnection("Data Source=Mercure.SQLite;");
+            sqlConn.Open();
+            SQLiteCommand sqlCmd = sqlConn.CreateCommand();
+            sqlCmd.CommandText = "Delete From Articles WHERE RefMarque = @RefMarque";
+            sqlCmd.Parameters.Add(new SQLiteParameter("@RefMarque", refMarqueToDelete));
+            SQLiteDataReader reader = sqlCmd.ExecuteReader();
+
+            reader.Close();
+            reader.Dispose();
             sqlConn.Close();
         }
 
@@ -585,13 +654,15 @@ namespace Mercure
         /// Delete an brand from the DB
         /// </summary>
         /// <param name="refMarqueToDelete">The reference (ID) of the brand we want to delete</param>
-        internal void DeleteMarque(string refMarqueToDelete)
+        internal void DeleteMarque(Marque marque)
         {
             sqlConn = new SQLiteConnection("Data Source=Mercure.SQLite;");
             sqlConn.Open();
             SQLiteCommand sqlCmd = sqlConn.CreateCommand();
-            sqlCmd.CommandText = "Delete From Marques Where RefArticle = '" + refMarqueToDelete + "'";
+            sqlCmd.CommandText = "Delete From Marques Where RefMarque = '" + marque.RefMarque + "'";
             SQLiteDataReader reader = sqlCmd.ExecuteReader();
+
+            Console.WriteLine(sqlCmd.CommandText);
 
             reader.Close();
             reader.Dispose();
