@@ -12,6 +12,8 @@ namespace Mercure
 {
     public partial class AddArticleForm : Form
     {
+        Article article;
+
         public AddArticleForm(String reference)
         {
             InitializeComponent();
@@ -20,7 +22,7 @@ namespace Mercure
             prixNum.Increment = 0.01M;
 
             //On récupère l'article correspondant à la référence
-            Article article = DBManager.GetInstance().GetArticleFromReference(reference);
+            article = DBManager.GetInstance().GetArticleFromReference(reference);
 
             //On ajoute les données de la BDD aux combobox
             sousFamilleCombo.Items.AddRange(DBManager.GetInstance().GetSousFamilleNames());
