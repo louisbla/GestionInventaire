@@ -180,6 +180,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(692, 480);
             this.Controls.Add(this.Ok_btn);
+            this.ClientSize = new System.Drawing.Size(692, 480);
             this.Controls.Add(this.labelNbArticles);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.groupBox1);

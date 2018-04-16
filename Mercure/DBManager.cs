@@ -24,6 +24,206 @@ namespace Mercure
             return sqlConn;
         }
 
+        /// <summary>
+        /// Get a brand object thanks to it reference.
+        /// </summary>
+        public Marque GetMarqueByRef(string refMarqueToEdit)
+        {
+            Marque marque = new Marque();
+
+            sqlConn.Open();
+            SQLiteCommand sqlCmd = new SQLiteCommand("SELECT RefMarque, Nom FROM Marques WHERE RefMarque = @RefMarque", sqlConn);
+            sqlCmd.Parameters.Add(new SQLiteParameter("@RefMarque", refMarqueToEdit));
+
+            SQLiteDataReader reader = sqlCmd.ExecuteReader();
+
+            if(reader.Read())
+            {
+                marque.RefMarque = reader.GetInt32(0);
+                marque.Nom = reader.GetString(1);
+            }
+
+            reader.Close();
+            reader.Dispose();
+            sqlConn.Close();
+
+            return marque;
+        }
+
+        /// <summary>
+        /// Edit a brand
+        /// </summary>
+        /// <param name="marque">Object name to edit</param>
+        /// <param name="nom">New name</param>
+        internal void EditMarque(Marque marque, string nom)
+        {
+            sqlConn = new SQLiteConnection("Data Source=Mercure.SQLite;");
+
+            SQLiteCommand sqlCmd = new SQLiteCommand("UPDATE Marques SET RefMarque = @RefMarque, Nom = @Nom WHERE RefMarque = @RefMarque;", sqlConn);
+
+            sqlCmd.Parameters.Add(new SQLiteParameter("@RefMarque", marque.RefMarque));
+            sqlCmd.Parameters.Add(new SQLiteParameter("@Nom", nom));
+
+            Console.WriteLine(sqlCmd.CommandText);
+
+            sqlCmd.Connection = sqlConn;
+            sqlConn.Open();
+
+            SQLiteTransaction trans = sqlConn.BeginTransaction();
+            try
+            {
+                Console.WriteLine(sqlCmd.ExecuteNonQuery() + " : " + sqlCmd.CommandText);
+            }
+            catch (SQLiteException e)
+            {
+                Console.WriteLine(sqlCmd.CommandText);
+                Console.WriteLine(e.Message);
+            }
+            trans.Commit();
+            sqlConn.Close();
+        }
+
+        /// <summary>
+        /// Edit a famille
+        /// </summary>
+        /// <param name="famille">Object name to edit</param>
+        /// <param name="nom">New name</param>
+        internal void EditFamille(Famille famille, string nom)
+        {
+            sqlConn = new SQLiteConnection("Data Source=Mercure.SQLite;");
+
+            SQLiteCommand sqlCmd = new SQLiteCommand("UPDATE Familles SET RefFamille = @RefFamille, Nom = @Nom WHERE RefFamille = @RefFamille;", sqlConn);
+
+            sqlCmd.Parameters.Add(new SQLiteParameter("@RefFamille", famille.RefFamille));
+            sqlCmd.Parameters.Add(new SQLiteParameter("@Nom", nom));
+
+            Console.WriteLine(sqlCmd.CommandText);
+
+            sqlCmd.Connection = sqlConn;
+            sqlConn.Open();
+
+            SQLiteTransaction trans = sqlConn.BeginTransaction();
+            try
+            {
+                Console.WriteLine(sqlCmd.ExecuteNonQuery() + " : " + sqlCmd.CommandText);
+            }
+            catch (SQLiteException e)
+            {
+                Console.WriteLine(sqlCmd.CommandText);
+                Console.WriteLine(e.Message);
+            }
+            trans.Commit();
+            sqlConn.Close();
+        }
+
+        /// <summary>
+        /// Get a family object thanks to it reference.
+        /// </summary>
+        public Famille GetFamilleByRef(string refFamilleToEdit)
+        {
+            Famille famille = new Famille();
+
+            sqlConn.Open();
+            SQLiteCommand sqlCmd = new SQLiteCommand("SELECT RefFamille, Nom FROM Familles WHERE RefFamille = @RefFamille", sqlConn);
+            sqlCmd.Parameters.Add(new SQLiteParameter("@RefFamille", refFamilleToEdit));
+
+            SQLiteDataReader reader = sqlCmd.ExecuteReader();
+
+            if (reader.Read())
+            {
+                famille.RefFamille = reader.GetInt32(0);
+                famille.Nom = reader.GetString(1);
+            }
+
+            reader.Close();
+            reader.Dispose();
+            sqlConn.Close();
+
+            return famille;
+        }
+
+        /// <summary>
+        /// Get a sous-famille object thanks to it reference.
+        /// </summary>
+        public SousFamille GetSousFamilleByRef(string refSousFamille)
+        {
+            SousFamille sousfamille = new SousFamille();
+
+            sqlConn.Open();
+            SQLiteCommand sqlCmd = new SQLiteCommand("SELECT RefSousFamille, Nom FROM SousFamilles WHERE RefSousFamille = @RefSousFamille", sqlConn);
+            sqlCmd.Parameters.Add(new SQLiteParameter("@RefSousFamille", refSousFamille));
+
+            SQLiteDataReader reader = sqlCmd.ExecuteReader();
+
+            if (reader.Read())
+            {
+                sousfamille.RefSousFamille = reader.GetInt32(0);
+                sousfamille.Nom = reader.GetString(1);
+            }
+
+            reader.Close();
+            reader.Dispose();
+            sqlConn.Close();
+
+            return sousfamille;
+        }
+
+        /// <summary>
+        /// Get all sous-familles that belong to a family
+        /// </summary>
+        public List<SousFamille> GetListeSousFamillesByFamille(string refFamille)
+        {
+            Famille famille = new Famille();
+            SousFamille sousFamille = new SousFamille();
+            List<SousFamille> listSousFamilles = new List<SousFamille>();
+
+            sqlConn.Open();
+
+            //Compter combien de résultat
+            int nbResults = 0;
+            SQLiteCommand sqlCmd = new SQLiteCommand("SELECT COUNT(*) FROM SousFamilles WHERE RefFamille = @RefFamille", sqlConn);
+            sqlCmd.Parameters.Add(new SQLiteParameter("@RefFamille", refFamille));
+
+            SQLiteDataReader reader = sqlCmd.ExecuteReader();
+
+            if (reader.Read())
+                nbResults = reader.GetInt16(0);
+
+            reader.Close();
+            reader.Dispose();
+
+
+            //Récupération des sous-familles
+            sqlCmd = new SQLiteCommand("SELECT RefSousFamille, RefFamille, Nom FROM SousFamilles WHERE RefFamille = @RefFamille", sqlConn);
+            sqlCmd.Parameters.Add(new SQLiteParameter("@RefFamille", refFamille));
+
+            reader = sqlCmd.ExecuteReader();
+
+            if (reader.Read())
+            {
+                for(int i=0; i < nbResults; i++)
+                {
+                    sousFamille.RefSousFamille = reader.GetInt32(0);
+                    sousFamille.RefFamille = reader.GetInt32(1);
+                    sousFamille.Nom = reader.GetString(2);
+
+                    listSousFamilles.Add(sousFamille);
+                }
+                
+            }
+
+            reader.Close();
+            reader.Dispose();
+            sqlConn.Close();
+
+            return listSousFamilles;
+        }
+
+        /// <summary>
+        /// Get an article thanks to his reference
+        /// </summary>
+        /// <param name="reference">reference (ID) of the article</param>
+        /// <returns>Returns an object Article</returns>
         public Marque GetMarqueByRef(string refMarqueToEdit)
         {
             Marque marque = new Marque();
@@ -173,6 +373,63 @@ namespace Mercure
             sqlConn.Close();
         }
 
+
+        /// <summary>
+        /// Delete all articles related to a brand
+        /// </summary>
+        public void DeleteArticlesByMarque(string refMarqueToDelete)
+        {
+            sqlConn = new SQLiteConnection("Data Source=Mercure.SQLite;");
+            sqlConn.Open();
+            SQLiteCommand sqlCmd = sqlConn.CreateCommand();
+            sqlCmd.CommandText = "Delete From Articles WHERE RefMarque = @RefMarque";
+            sqlCmd.Parameters.Add(new SQLiteParameter("@RefMarque", refMarqueToDelete));
+            SQLiteDataReader reader = sqlCmd.ExecuteReader();
+
+            reader.Close();
+            reader.Dispose();
+            sqlConn.Close();
+        }
+
+        /// <summary>
+        /// Delete all articles related to a sous famille
+        /// </summary>
+        public void DeleteArticlesBySousFamille(int refSousFamilleToDelete)
+        {
+            sqlConn = new SQLiteConnection("Data Source=Mercure.SQLite;");
+            sqlConn.Open();
+            SQLiteCommand sqlCmd = sqlConn.CreateCommand();
+            sqlCmd.CommandText = "Delete From Articles WHERE RefSousFamille = @RefSousFamille";
+            sqlCmd.Parameters.Add(new SQLiteParameter("@RefSousFamille", refSousFamilleToDelete));
+            SQLiteDataReader reader = sqlCmd.ExecuteReader();
+
+            reader.Close();
+            reader.Dispose();
+            sqlConn.Close();
+        }
+
+        /// <summary>
+        /// Delete all sous-familles that belong to a family
+        /// </summary>
+        public void DeleteSousFamillesByFamille(string refFamilleToDelete)
+        {
+            sqlConn = new SQLiteConnection("Data Source=Mercure.SQLite;");
+            sqlConn.Open();
+            SQLiteCommand sqlCmd = sqlConn.CreateCommand();
+            sqlCmd.CommandText = "Delete From SousFamilles WHERE RefFamille = @RefFamille";
+            sqlCmd.Parameters.Add(new SQLiteParameter("@RefFamille", refFamilleToDelete));
+            SQLiteDataReader reader = sqlCmd.ExecuteReader();
+
+            reader.Close();
+            reader.Dispose();
+            sqlConn.Close();
+        }
+
+        /// <summary>
+        /// Add a 'sous-famille' to the DB
+        /// </summary>
+        /// <param name="sousFamille">'sous-famille' name we want to add</param>
+        /// <param name="famille">Family name to which the 'sous-famille' belongs</param>
 
         /// <summary>
         /// Delete all articles related to a brand
@@ -660,6 +917,42 @@ namespace Mercure
             sqlConn.Open();
             SQLiteCommand sqlCmd = sqlConn.CreateCommand();
             sqlCmd.CommandText = "Delete From Marques Where RefMarque = '" + marque.RefMarque + "'";
+            SQLiteDataReader reader = sqlCmd.ExecuteReader();
+
+            Console.WriteLine(sqlCmd.CommandText);
+
+            reader.Close();
+            reader.Dispose();
+            sqlConn.Close();
+        }
+
+        /// <summary>
+        /// Delete an family from the DB
+        /// </summary>
+        internal void DeleteFamille(Famille famille)
+        {
+            sqlConn = new SQLiteConnection("Data Source=Mercure.SQLite;");
+            sqlConn.Open();
+            SQLiteCommand sqlCmd = sqlConn.CreateCommand();
+            sqlCmd.CommandText = "Delete From Familles Where RefFamille = '" + famille.RefFamille + "'";
+            SQLiteDataReader reader = sqlCmd.ExecuteReader();
+
+            Console.WriteLine(sqlCmd.CommandText);
+
+            reader.Close();
+            reader.Dispose();
+            sqlConn.Close();
+        }
+
+        /// <summary>
+        /// Delete an sous-famille from the DB
+        /// </summary>
+        internal void DeleteSousFamille(SousFamille sousfamille)
+        {
+            sqlConn = new SQLiteConnection("Data Source=Mercure.SQLite;");
+            sqlConn.Open();
+            SQLiteCommand sqlCmd = sqlConn.CreateCommand();
+            sqlCmd.CommandText = "Delete From SousFamilles Where RefSousFamille = '" + sousfamille.RefSousFamille + "'";
             SQLiteDataReader reader = sqlCmd.ExecuteReader();
 
             Console.WriteLine(sqlCmd.CommandText);

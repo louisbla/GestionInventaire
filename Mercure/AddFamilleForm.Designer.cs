@@ -47,12 +47,12 @@
             // 
             this.FamilleTxtbox.Location = new System.Drawing.Point(93, 32);
             this.FamilleTxtbox.Name = "FamilleTxtbox";
-            this.FamilleTxtbox.Size = new System.Drawing.Size(121, 22);
+            this.FamilleTxtbox.Size = new System.Drawing.Size(163, 22);
             this.FamilleTxtbox.TabIndex = 6;
             // 
             // cancelBtn
             // 
-            this.cancelBtn.Location = new System.Drawing.Point(118, 82);
+            this.cancelBtn.Location = new System.Drawing.Point(183, 94);
             this.cancelBtn.Name = "cancelBtn";
             this.cancelBtn.Size = new System.Drawing.Size(85, 23);
             this.cancelBtn.TabIndex = 5;
@@ -62,7 +62,7 @@
             // 
             // acceptBtn
             // 
-            this.acceptBtn.Location = new System.Drawing.Point(21, 82);
+            this.acceptBtn.Location = new System.Drawing.Point(61, 94);
             this.acceptBtn.Name = "acceptBtn";
             this.acceptBtn.Size = new System.Drawing.Size(75, 23);
             this.acceptBtn.TabIndex = 4;
@@ -74,7 +74,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(226, 138);
+            this.ClientSize = new System.Drawing.Size(299, 151);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.FamilleTxtbox);
             this.Controls.Add(this.cancelBtn);

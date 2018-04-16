@@ -12,11 +12,27 @@ namespace Mercure
 {
     public partial class AddSousFamilleForm : Form
     {
+        private SousFamille sousfamille;
+
         public AddSousFamilleForm()
         {
             InitializeComponent();
 
             familleCombobox.Items.AddRange(DBManager.GetInstance().GetFamilleNames());
+            familleCombobox.SelectedIndex = 1;
+        }
+
+        public AddSousFamilleForm(SousFamille sousfamilleToEdit)
+        {
+            InitializeComponent();
+
+            this.Text = "Modifier une sous-famille";
+
+            sousfamille = sousfamilleToEdit;
+            sousFamilleTxtbox.Text = sousfamilleToEdit.Nom;
+
+            familleCombobox.Items.AddRange(DBManager.GetInstance().GetFamilleNames());
+            familleCombobox.SelectedIndex = familleCombobox.Items.IndexOf(sousfamilleToEdit.Nom);
         }
 
         private void cancelBtn_Click(object sender, EventArgs e)

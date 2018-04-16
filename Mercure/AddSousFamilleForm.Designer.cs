@@ -40,7 +40,7 @@
             // 
             this.sousFamilleTxtbox.Location = new System.Drawing.Point(98, 33);
             this.sousFamilleTxtbox.Name = "sousFamilleTxtbox";
-            this.sousFamilleTxtbox.Size = new System.Drawing.Size(121, 22);
+            this.sousFamilleTxtbox.Size = new System.Drawing.Size(193, 22);
             this.sousFamilleTxtbox.TabIndex = 0;
             // 
             // familleCombobox
@@ -49,7 +49,7 @@
             this.familleCombobox.FormattingEnabled = true;
             this.familleCombobox.Location = new System.Drawing.Point(98, 88);
             this.familleCombobox.Name = "familleCombobox";
-            this.familleCombobox.Size = new System.Drawing.Size(121, 24);
+            this.familleCombobox.Size = new System.Drawing.Size(193, 24);
             this.familleCombobox.TabIndex = 1;
             // 
             // label1
@@ -73,7 +73,7 @@
             // 
             // acceptBtn
             // 
-            this.acceptBtn.Location = new System.Drawing.Point(22, 152);
+            this.acceptBtn.Location = new System.Drawing.Point(98, 152);
             this.acceptBtn.Name = "acceptBtn";
             this.acceptBtn.Size = new System.Drawing.Size(75, 23);
             this.acceptBtn.TabIndex = 4;
@@ -83,7 +83,7 @@
             // 
             // cancelBtn
             // 
-            this.cancelBtn.Location = new System.Drawing.Point(123, 152);
+            this.cancelBtn.Location = new System.Drawing.Point(216, 152);
             this.cancelBtn.Name = "cancelBtn";
             this.cancelBtn.Size = new System.Drawing.Size(75, 23);
             this.cancelBtn.TabIndex = 5;
@@ -95,7 +95,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(256, 213);
+            this.ClientSize = new System.Drawing.Size(322, 213);
             this.Controls.Add(this.cancelBtn);
             this.Controls.Add(this.acceptBtn);
             this.Controls.Add(this.label2);

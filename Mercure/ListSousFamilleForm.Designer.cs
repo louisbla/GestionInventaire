@@ -34,6 +34,10 @@
             this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.ajouterUneSousfamilleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.modifierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.supprimerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // sousfamilleListview
@@ -42,6 +46,7 @@
             this.columnHeader11,
             this.columnHeader12,
             this.columnHeader13});
+            this.sousfamilleListview.ContextMenuStrip = this.contextMenuStrip1;
             this.sousfamilleListview.Dock = System.Windows.Forms.DockStyle.Fill;
             this.sousfamilleListview.FullRowSelect = true;
             this.sousfamilleListview.GridLines = true;
@@ -53,6 +58,7 @@
             this.sousfamilleListview.UseCompatibleStateImageBehavior = false;
             this.sousfamilleListview.View = System.Windows.Forms.View.Details;
             this.sousfamilleListview.KeyDown += new System.Windows.Forms.KeyEventHandler(this.sousfamilleListview_KeyDown);
+            this.sousfamilleListview.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.sousfamilleListview_MouseDoubleClick);
             // 
             // columnHeader11
             // 
@@ -71,8 +77,34 @@
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ajouterUneSousfamilleToolStripMenuItem,
+            this.modifierToolStripMenuItem,
+            this.supprimerToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(241, 76);
+            this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
+            // 
+            // ajouterUneSousfamilleToolStripMenuItem
+            // 
+            this.ajouterUneSousfamilleToolStripMenuItem.Name = "ajouterUneSousfamilleToolStripMenuItem";
+            this.ajouterUneSousfamilleToolStripMenuItem.Size = new System.Drawing.Size(240, 24);
+            this.ajouterUneSousfamilleToolStripMenuItem.Text = "Ajouter une sous-famille";
+            this.ajouterUneSousfamilleToolStripMenuItem.Click += new System.EventHandler(this.ajouterUneSousfamilleToolStripMenuItem_Click);
+            // 
+            // modifierToolStripMenuItem
+            // 
+            this.modifierToolStripMenuItem.Name = "modifierToolStripMenuItem";
+            this.modifierToolStripMenuItem.Size = new System.Drawing.Size(240, 24);
+            this.modifierToolStripMenuItem.Text = "Modifier";
+            this.modifierToolStripMenuItem.Click += new System.EventHandler(this.modifierToolStripMenuItem_Click);
+            // 
+            // supprimerToolStripMenuItem
+            // 
+            this.supprimerToolStripMenuItem.Name = "supprimerToolStripMenuItem";
+            this.supprimerToolStripMenuItem.Size = new System.Drawing.Size(240, 24);
+            this.supprimerToolStripMenuItem.Text = "Supprimer";
+            this.supprimerToolStripMenuItem.Click += new System.EventHandler(this.supprimerToolStripMenuItem_Click);
             // 
             // ListSousFamilleForm
             // 
@@ -82,6 +114,7 @@
             this.Controls.Add(this.sousfamilleListview);
             this.Name = "ListSousFamilleForm";
             this.Text = "ListSousFamilleForm";
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -93,5 +126,8 @@
         private System.Windows.Forms.ColumnHeader columnHeader12;
         private System.Windows.Forms.ColumnHeader columnHeader13;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem ajouterUneSousfamilleToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem modifierToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem supprimerToolStripMenuItem;
     }
 }

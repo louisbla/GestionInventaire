@@ -10,13 +10,24 @@ using System.Windows.Forms;
 
 namespace Mercure
 {
-	
-	
+    
     public partial class AddFamilleForm : Form
     {
+        private Famille famille;
+
         public AddFamilleForm()
         {
             InitializeComponent();
+        }
+
+        public AddFamilleForm(Famille familleToEdit)
+        {
+            InitializeComponent();
+
+            this.Text = "Modifier une famille";
+
+            famille = familleToEdit;
+            FamilleTxtbox.Text = familleToEdit.Nom;
         }
 
         private void cancelBtn_Click(object sender, EventArgs e)
@@ -26,12 +37,20 @@ namespace Mercure
 
         private void acceptBtn_Click(object sender, EventArgs e)
         {
-            String famille = FamilleTxtbox.Text;
+            if (FamilleTxtbox.Text != "")
+            {
+                String nom = FamilleTxtbox.Text;
 
-            //Ajouter article to DB
-            DBManager.GetInstance().AjouterFamilleToDB(famille);
-
-            this.Close();
+                if (famille != null)
+                {
+                    DBManager.GetInstance().EditFamille(famille, nom);
+                }
+                else
+                {
+                    DBManager.GetInstance().AjouterFamilleToDB(nom);
+                }
+                this.Close();
+            }
         }
     }
 }
