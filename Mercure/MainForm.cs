@@ -23,7 +23,7 @@ namespace Mercure
             SelectionXML selectionXML = new SelectionXML();
             selectionXML.ShowDialog();
 
-            RefreshListWiew();
+            RefreshListView();
         }
 
 
@@ -34,19 +34,15 @@ namespace Mercure
                 MessageBoxIcon.Warning) == DialogResult.Yes)
             {
                 DBManager.GetInstance().ViderDB();
-                RefreshListWiew();
+                RefreshListView();
        
             }
 
         }
 
-        private void RefreshListWiew()
+        private void RefreshListView()
         {
             articleListview.Items.Clear();
-            marqueListview.Items.Clear();
-            familleListview.Items.Clear();
-            sousfamilleListview.Items.Clear();
-
 
             List<String[]> listArticles = DBManager.GetInstance().GetListArticles();
             foreach (String[] article in listArticles)
@@ -54,43 +50,13 @@ namespace Mercure
                 ListViewItem itemArticle = new ListViewItem(article);
                 articleListview.Items.Add(itemArticle);
             }
-
-            List<String[]> listMarques = DBManager.GetInstance().GetListMarques();
-            foreach (String[] marque in listMarques)
-            {
-                ListViewItem item = new ListViewItem(marque);
-
-                marqueListview.Items.Add(item);
-            }
-
-            List<String[]> listFamilles = DBManager.GetInstance().GetListFamilles();
-            foreach (String[] famille in listFamilles)
-            {
-                ListViewItem item = new ListViewItem(famille);
-
-                familleListview.Items.Add(item);
-            }
-
-            List<String[]> listSousFamilles = DBManager.GetInstance().GetListSousFamilles();
-            foreach (String[] sousFamille in listSousFamilles)
-            {
-                ListViewItem item = new ListViewItem(sousFamille);
-                sousfamilleListview.Items.Add(item);
-            }
-        }
-
-        private void ArticleToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            ArticleEditForm form = new ArticleEditForm();
-            form.ShowDialog();
-            RefreshListWiew();
         }
 
         private void MarqueToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             AddMarqueForm form = new AddMarqueForm();
             form.ShowDialog();
-            RefreshListWiew();
+            RefreshListView();
         }
 
         private void FamilleToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -107,7 +73,15 @@ namespace Mercure
 
         private void ModifierArticleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Console.WriteLine( e.ToString());
+            if (articleListview.SelectedIndices.Count == 1)
+            {
+                int SelectedIndex = articleListview.SelectedIndices[0];
+                String refArticleToEdit = this.articleListview.Items[SelectedIndex].SubItems[1].Text;
+
+                AddArticleForm form = new AddArticleForm(refArticleToEdit);
+                form.ShowDialog();
+                RefreshListView();
+            }
         }
 
         /// <summary>
@@ -124,14 +98,14 @@ namespace Mercure
 
                     DBManager.GetInstance().DeleteArticle(refArticleToDelete);
 
-                    RefreshListWiew();
+                    RefreshListView();
                 }
 
             }
 
             else if (e.KeyCode == Keys.F5)
             {
-                RefreshListWiew();
+                RefreshListView();
             }
             else if (e.KeyCode == Keys.Enter)
             {
@@ -140,62 +114,68 @@ namespace Mercure
                     int SelectedIndex = articleListview.SelectedIndices[0];
                     String refArticleToEdit = this.articleListview.Items[SelectedIndex].SubItems[1].Text;
 
-                    ArticleEditForm form = new ArticleEditForm(refArticleToEdit);
+                    AddArticleForm form = new AddArticleForm(refArticleToEdit);
                     form.ShowDialog();
-                    RefreshListWiew();
+                    RefreshListView();
                 }
             }
+        }
+
+        private void supprimerArticleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (articleListview.SelectedIndices.Count == 1)
+            {
+                if (articleListview.SelectedIndices.Count == 1)
+                {
+                    int SelectedIndex = articleListview.SelectedIndices[0];
+                    String refArticleToDelete = this.articleListview.Items[SelectedIndex].SubItems[1].Text;
+
+                    DBManager.GetInstance().DeleteArticle(refArticleToDelete);
+
+                    RefreshListView();
+                }
+            }
+        }
+
+        private void marquesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ListMarqueForm form = new ListMarqueForm();
+            form.ShowDialog();
+        }
+
+        private void famillesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ListFamilleForm form = new ListFamilleForm();
+            form.ShowDialog();
+        }
+
+        private void sousFamillesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ListSousFamilleForm form = new ListSousFamilleForm();
+            form.ShowDialog();
         }
 
         /// <summary>
         /// Gestion du double click sur le listview des articles
         /// </summary>
-        private void ArticleListview_DoubleClick(object sender, EventArgs e)
+        private void articleListview_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             if (articleListview.SelectedIndices.Count == 1)
             {
                 int SelectedIndex = articleListview.SelectedIndices[0];
                 String refArticleToEdit = this.articleListview.Items[SelectedIndex].SubItems[1].Text;
 
-                ArticleEditForm form = new ArticleEditForm(refArticleToEdit);
+                AddArticleForm form = new AddArticleForm(refArticleToEdit);
                 form.ShowDialog();
-                RefreshListWiew();
+                RefreshListView();
             }
         }
 
-        /// <summary>
-        /// Gestion de l'appuie de touche sur le listview des marques
-        /// </summary>
-        private void MarqueListview_KeyDown(object sender, KeyEventArgs e)
+        private void ajouterArticleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (e.KeyCode == Keys.Delete && marqueListview.SelectedIndices.Count == 1)
-            {
-                    int SelectedIndex = marqueListview.SelectedIndices[0];
-                    String refMarqueToDelete = this.marqueListview.Items[SelectedIndex].SubItems[1].Text;
-
-                    DBManager.GetInstance().DeleteMarque(refMarqueToDelete);
-
-                    RefreshListWiew();
-                
-
-            }
-
-            else if (e.KeyCode == Keys.F5)
-            {
-                RefreshListWiew();
-            }
-            else if (e.KeyCode == Keys.Enter)
-            {
-                if (articleListview.SelectedIndices.Count == 1)
-                {
-                    int SelectedIndex = articleListview.SelectedIndices[0];
-                    String refArticleToEdit = this.articleListview.Items[SelectedIndex].SubItems[1].Text;
-
-                    ArticleEditForm form = new ArticleEditForm(refArticleToEdit);
-                    form.ShowDialog();
-                    RefreshListWiew();
-                }
-            }
+            AddArticleForm form = new AddArticleForm();
+            form.ShowDialog();
+            RefreshListView();
         }
     }
 }

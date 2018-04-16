@@ -36,10 +36,10 @@
             this.RBtn_New_Integration = new System.Windows.Forms.RadioButton();
             this.RBtn_MAJ = new System.Windows.Forms.RadioButton();
             this.listViewErrors = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.labelNbArticles = new System.Windows.Forms.Label();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -121,19 +121,25 @@
             // 
             this.listViewErrors.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1});
+            this.listViewErrors.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
             this.listViewErrors.Location = new System.Drawing.Point(6, 21);
             this.listViewErrors.Name = "listViewErrors";
-            this.listViewErrors.Size = new System.Drawing.Size(1105, 199);
+            this.listViewErrors.Size = new System.Drawing.Size(653, 199);
             this.listViewErrors.TabIndex = 8;
             this.listViewErrors.UseCompatibleStateImageBehavior = false;
             this.listViewErrors.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Erreur";
+            this.columnHeader1.Width = 1200;
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.listViewErrors);
             this.groupBox1.Location = new System.Drawing.Point(15, 242);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1117, 226);
+            this.groupBox1.Size = new System.Drawing.Size(670, 226);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Erreurs :";
@@ -156,16 +162,11 @@
             this.labelNbArticles.TabIndex = 13;
             this.labelNbArticles.Text = "0";
             // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Erreur";
-            this.columnHeader1.Width = 1200;
-            // 
             // SelectionXML
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1144, 480);
+            this.ClientSize = new System.Drawing.Size(692, 480);
             this.Controls.Add(this.labelNbArticles);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.groupBox1);
@@ -177,6 +178,9 @@
             this.Controls.Add(this.Btn_Integration);
             this.Controls.Add(this.Btn_Parcourir_XML);
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(710, 527);
+            this.MinimumSize = new System.Drawing.Size(710, 527);
             this.Name = "SelectionXML";
             this.Text = "SelectionXML";
             this.groupBox1.ResumeLayout(false);

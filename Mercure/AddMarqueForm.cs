@@ -12,9 +12,21 @@ namespace Mercure
 {
     public partial class AddMarqueForm : Form
     {
+        private Marque marque;
+
         public AddMarqueForm()
         {
             InitializeComponent();
+        }
+
+        public AddMarqueForm(Marque marqueToEdit)
+        {
+            InitializeComponent();
+
+            this.Text = "Modifier une marque";
+
+            marque = marqueToEdit;
+            MarqueTxtbox.Text = marqueToEdit.Nom;
         }
 
         private void CancelBtn_Click(object sender, EventArgs e)
@@ -24,12 +36,19 @@ namespace Mercure
 
         private void AcceptBtn_Click(object sender, EventArgs e)
         {
-            String marque = MarqueTxtbox.Text;
+            if (MarqueTxtbox.Text != "")
+            {
+                String nom = MarqueTxtbox.Text;
 
-            //Ajouter article to DB
-            DBManager.GetInstance().AjouterMarqueToDB(marque);
-
-            this.Close();
+                if (marque != null)
+                {
+                    DBManager.GetInstance().EditMarque(marque, nom);
+                }
+                else {
+                    DBManager.GetInstance().AjouterMarqueToDB(nom);
+                }
+                this.Close();
+            }
         }
     }
 }
