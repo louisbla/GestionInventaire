@@ -29,8 +29,8 @@ namespace Mercure
 
         private void EffacerLaBaseDeDonnéesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(MessageBox.Show("Attention, êtes-vous sur de vouloir effacer la base de données ?",
-                "Effacer la Base de données", MessageBoxButtons.YesNo , 
+            if(MessageBox.Show("Attention, êtes-vous sur de vouloir vider la base de données ?",
+                "Vider la Base de données", MessageBoxButtons.YesNo , 
                 MessageBoxIcon.Warning) == DialogResult.Yes)
             {
                 DBManager.GetInstance().ViderDB();

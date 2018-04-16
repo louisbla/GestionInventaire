@@ -61,10 +61,9 @@ namespace Mercure
                     }
                 }
 
-
                 DBManager.GetInstance().AjouterListToDB(list, this);
 
-                //this.Close();
+                Ok_btn.Enabled = true;
             }
             else if (RBtn_New_Integration.Checked == true && isPathEntered == true)
             {
@@ -84,7 +83,8 @@ namespace Mercure
 
                 DBManager.GetInstance().AjouterListToDB(list, this);
 
-                //this.Close();
+
+                Ok_btn.Enabled = true;
 
             }
             else
@@ -124,6 +124,11 @@ namespace Mercure
         public void ResetNbArticles()
         {
             labelNbArticles.Text = "0";
+        }
+
+        private void Ok_btn_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

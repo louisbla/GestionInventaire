@@ -84,15 +84,15 @@
             // selectionnerFichierXMLToolStripMenuItem
             // 
             this.selectionnerFichierXMLToolStripMenuItem.Name = "selectionnerFichierXMLToolStripMenuItem";
-            this.selectionnerFichierXMLToolStripMenuItem.Size = new System.Drawing.Size(262, 26);
+            this.selectionnerFichierXMLToolStripMenuItem.Size = new System.Drawing.Size(251, 26);
             this.selectionnerFichierXMLToolStripMenuItem.Text = "Selectionner fichier XML";
             this.selectionnerFichierXMLToolStripMenuItem.Click += new System.EventHandler(this.SelectionnerFichierXMLToolStripMenuItem_Click);
             // 
             // effacerLaBaseDeDonnéesToolStripMenuItem
             // 
             this.effacerLaBaseDeDonnéesToolStripMenuItem.Name = "effacerLaBaseDeDonnéesToolStripMenuItem";
-            this.effacerLaBaseDeDonnéesToolStripMenuItem.Size = new System.Drawing.Size(262, 26);
-            this.effacerLaBaseDeDonnéesToolStripMenuItem.Text = "Effacer la Base de données";
+            this.effacerLaBaseDeDonnéesToolStripMenuItem.Size = new System.Drawing.Size(251, 26);
+            this.effacerLaBaseDeDonnéesToolStripMenuItem.Text = "Vider la Base de données";
             this.effacerLaBaseDeDonnéesToolStripMenuItem.Click += new System.EventHandler(this.EffacerLaBaseDeDonnéesToolStripMenuItem_Click);
             // 
             // ajouterToolStripMenuItem
@@ -182,12 +182,12 @@
             this.modifierArticleToolStripMenuItem,
             this.supprimerArticleToolStripMenuItem});
             this.articleContextMenu.Name = "contextMenuStrip1";
-            this.articleContextMenu.Size = new System.Drawing.Size(211, 104);
+            this.articleContextMenu.Size = new System.Drawing.Size(193, 76);
             // 
             // ajouterArticleToolStripMenuItem
             // 
             this.ajouterArticleToolStripMenuItem.Name = "ajouterArticleToolStripMenuItem";
-            this.ajouterArticleToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.ajouterArticleToolStripMenuItem.Size = new System.Drawing.Size(192, 24);
             this.ajouterArticleToolStripMenuItem.Text = "Ajouter Article";
             this.ajouterArticleToolStripMenuItem.Click += new System.EventHandler(this.ajouterArticleToolStripMenuItem_Click);
             // 

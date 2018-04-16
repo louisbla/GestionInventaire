@@ -40,6 +40,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.labelNbArticles = new System.Windows.Forms.Label();
+            this.Ok_btn = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,7 +57,7 @@
             // 
             // Btn_Integration
             // 
-            this.Btn_Integration.Location = new System.Drawing.Point(64, 149);
+            this.Btn_Integration.Location = new System.Drawing.Point(64, 142);
             this.Btn_Integration.Margin = new System.Windows.Forms.Padding(4);
             this.Btn_Integration.Name = "Btn_Integration";
             this.Btn_Integration.Size = new System.Drawing.Size(204, 28);
@@ -67,7 +68,7 @@
             // 
             // progressBar
             // 
-            this.progressBar.Location = new System.Drawing.Point(300, 149);
+            this.progressBar.Location = new System.Drawing.Point(300, 142);
             this.progressBar.Margin = new System.Windows.Forms.Padding(4);
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(310, 28);
@@ -137,7 +138,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.listViewErrors);
-            this.groupBox1.Location = new System.Drawing.Point(15, 242);
+            this.groupBox1.Location = new System.Drawing.Point(15, 204);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(670, 226);
             this.groupBox1.TabIndex = 11;
@@ -147,7 +148,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(18, 222);
+            this.label2.Location = new System.Drawing.Point(18, 184);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(180, 17);
             this.label2.TabIndex = 12;
@@ -156,17 +157,29 @@
             // labelNbArticles
             // 
             this.labelNbArticles.AutoSize = true;
-            this.labelNbArticles.Location = new System.Drawing.Point(198, 222);
+            this.labelNbArticles.Location = new System.Drawing.Point(198, 184);
             this.labelNbArticles.Name = "labelNbArticles";
             this.labelNbArticles.Size = new System.Drawing.Size(16, 17);
             this.labelNbArticles.TabIndex = 13;
             this.labelNbArticles.Text = "0";
+            // 
+            // Ok_btn
+            // 
+            this.Ok_btn.Enabled = false;
+            this.Ok_btn.Location = new System.Drawing.Point(265, 437);
+            this.Ok_btn.Name = "Ok_btn";
+            this.Ok_btn.Size = new System.Drawing.Size(190, 31);
+            this.Ok_btn.TabIndex = 14;
+            this.Ok_btn.Text = "OK";
+            this.Ok_btn.UseVisualStyleBackColor = true;
+            this.Ok_btn.Click += new System.EventHandler(this.Ok_btn_Click);
             // 
             // SelectionXML
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(692, 480);
+            this.Controls.Add(this.Ok_btn);
             this.Controls.Add(this.labelNbArticles);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.groupBox1);
@@ -182,6 +195,7 @@
             this.MaximumSize = new System.Drawing.Size(710, 527);
             this.MinimumSize = new System.Drawing.Size(710, 527);
             this.Name = "SelectionXML";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "SelectionXML";
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -203,5 +217,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label labelNbArticles;
         private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.Button Ok_btn;
     }
 }
