@@ -73,7 +73,14 @@
     <Compile Include="AddArticleForm.Designer.cs">
       <DependentUpon>AddArticleForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ArticleEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ArticleEditForm.Designer.cs">
+      <DependentUpon>ArticleEditForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DBManager.cs" />
+    <Compile Include="Famille.cs" />
     <Compile Include="ListFamilleForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +114,7 @@
     <Compile Include="SelectionXML.Designer.cs">
       <DependentUpon>SelectionXML.cs</DependentUpon>
     </Compile>
+    <Compile Include="SousFamille.cs" />
     <EmbeddedResource Include="AddFamilleForm.resx">
       <DependentUpon>AddFamilleForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -118,6 +126,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AddArticleForm.resx">
       <DependentUpon>AddArticleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ArticleEditForm.resx">
+      <DependentUpon>ArticleEditForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ListFamilleForm.resx">
       <DependentUpon>ListFamilleForm.cs</DependentUpon>

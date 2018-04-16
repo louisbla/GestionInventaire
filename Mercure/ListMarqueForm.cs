@@ -109,6 +109,7 @@ namespace Mercure
             AddMarqueForm form = new AddMarqueForm();
             form.ShowDialog();
             RefreshListView();
+
         }
     }
 }

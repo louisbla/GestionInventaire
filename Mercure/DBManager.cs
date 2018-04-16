@@ -24,6 +24,7 @@ namespace Mercure
             return sqlConn;
         }
 
+        /*
         /// <summary>
         /// Get a brand object thanks to it reference.
         /// </summary>
@@ -48,7 +49,7 @@ namespace Mercure
             sqlConn.Close();
 
             return marque;
-        }
+        }*/
 
         /// <summary>
         /// Edit a brand
@@ -247,34 +248,7 @@ namespace Mercure
             return marque;
         }
 
-        internal void EditMarque(Marque marque, string nom)
-        {
-            sqlConn = new SQLiteConnection("Data Source=Mercure.SQLite;");
-
-            SQLiteCommand sqlCmd = new SQLiteCommand("UPDATE Marques SET RefMarque = @RefMarque, Nom = @Nom WHERE RefMarque = @RefMarque;", sqlConn);
-
-            sqlCmd.Parameters.Add(new SQLiteParameter("@RefMarque", marque.RefMarque));
-            sqlCmd.Parameters.Add(new SQLiteParameter("@Nom", nom));
-
-            Console.WriteLine(sqlCmd.CommandText);
-
-            sqlCmd.Connection = sqlConn;
-            sqlConn.Open();
-
-            SQLiteTransaction trans = sqlConn.BeginTransaction();
-            try
-            {
-                Console.WriteLine(sqlCmd.ExecuteNonQuery() + " : " + sqlCmd.CommandText);
-            }
-            catch (SQLiteException e)
-            {
-                Console.WriteLine(sqlCmd.CommandText);
-                Console.WriteLine(e.Message);
-            }
-            trans.Commit();
-            sqlConn.Close();
-        }
-
+      
         /// <summary>
         /// Get an article thanks to his reference
         /// </summary>
@@ -373,23 +347,6 @@ namespace Mercure
             sqlConn.Close();
         }
 
-
-        /// <summary>
-        /// Delete all articles related to a brand
-        /// </summary>
-        public void DeleteArticlesByMarque(string refMarqueToDelete)
-        {
-            sqlConn = new SQLiteConnection("Data Source=Mercure.SQLite;");
-            sqlConn.Open();
-            SQLiteCommand sqlCmd = sqlConn.CreateCommand();
-            sqlCmd.CommandText = "Delete From Articles WHERE RefMarque = @RefMarque";
-            sqlCmd.Parameters.Add(new SQLiteParameter("@RefMarque", refMarqueToDelete));
-            SQLiteDataReader reader = sqlCmd.ExecuteReader();
-
-            reader.Close();
-            reader.Dispose();
-            sqlConn.Close();
-        }
 
         /// <summary>
         /// Delete all articles related to a sous famille
