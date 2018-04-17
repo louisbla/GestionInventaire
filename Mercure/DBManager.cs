@@ -24,32 +24,27 @@ namespace Mercure
             return sqlConn;
         }
 
-        /*
-        /// <summary>
-        /// Get a brand object thanks to it reference.
-        /// </summary>
-        public Marque GetMarqueByRef(string refMarqueToEdit)
+        public int getRefFamille(string nom)
         {
-            Marque marque = new Marque();
+            int refFamille = 0;
 
             sqlConn.Open();
-            SQLiteCommand sqlCmd = new SQLiteCommand("SELECT RefMarque, Nom FROM Marques WHERE RefMarque = @RefMarque", sqlConn);
-            sqlCmd.Parameters.Add(new SQLiteParameter("@RefMarque", refMarqueToEdit));
+            SQLiteCommand sqlCmd = new SQLiteCommand("SELECT RefFamille FROM Familles WHERE Nom = @Nom", sqlConn);
+            sqlCmd.Parameters.Add(new SQLiteParameter("@Nom", nom));
 
             SQLiteDataReader reader = sqlCmd.ExecuteReader();
 
-            if(reader.Read())
+            if (reader.Read())
             {
-                marque.RefMarque = reader.GetInt32(0);
-                marque.Nom = reader.GetString(1);
+                refFamille = reader.GetInt32(0);
             }
 
             reader.Close();
             reader.Dispose();
             sqlConn.Close();
 
-            return marque;
-        }*/
+            return refFamille;
+        }
 
         /// <summary>
         /// Edit a brand
@@ -74,6 +69,68 @@ namespace Mercure
             try
             {
                 Console.WriteLine(sqlCmd.ExecuteNonQuery() + " : " + sqlCmd.CommandText);
+            }
+            catch (SQLiteException e)
+            {
+                Console.WriteLine(sqlCmd.CommandText);
+                Console.WriteLine(e.Message);
+            }
+            trans.Commit();
+            sqlConn.Close();
+        }
+
+        internal void EditSousFamille(SousFamille sousFamille)
+        {
+            sqlConn = new SQLiteConnection("Data Source=Mercure.SQLite;");
+
+            SQLiteCommand sqlCmd = new SQLiteCommand("UPDATE SousFamilles SET Nom = @Nom, RefFamille = @RefFamille WHERE RefSousFamille = @RefSousFamille;", sqlConn);
+
+            sqlCmd.Parameters.Add(new SQLiteParameter("@RefSousFamille", sousFamille.RefSousFamille));
+            sqlCmd.Parameters.Add(new SQLiteParameter("@Nom", sousFamille.Nom));
+            sqlCmd.Parameters.Add(new SQLiteParameter("@RefFamille", sousFamille.RefFamille));
+
+            Console.WriteLine(sqlCmd.CommandText);
+
+            sqlCmd.Connection = sqlConn;
+            sqlConn.Open();
+
+            SQLiteTransaction trans = sqlConn.BeginTransaction();
+            try
+            {
+                Console.WriteLine(sqlCmd.ExecuteNonQuery() + " : " + sqlCmd.CommandText);
+            }
+            catch (SQLiteException e)
+            {
+                Console.WriteLine(sqlCmd.CommandText);
+                Console.WriteLine(e.Message);
+            }
+            trans.Commit();
+            sqlConn.Close();
+        }
+
+        internal void EditArticle(Article article)
+        {
+            sqlConn = new SQLiteConnection("Data Source=Mercure.SQLite;");
+
+            SQLiteCommand sqlCmd = new SQLiteCommand("UPDATE Articles SET RefArticle = @RefArticle, Description = @Description, RefSousFamille = @RefSousFamille, RefMarque = @RefMarque, PrixHT = @Prix WHERE RefArticle = @RefArticle;", sqlConn);
+
+            sqlCmd.Parameters.Add(new SQLiteParameter("@RefArticle", article.RefArticle));
+            sqlCmd.Parameters.Add(new SQLiteParameter("@Description", article.Description));
+            sqlCmd.Parameters.Add(new SQLiteParameter("@RefSousFamille", ReturnID(article.SousFamille, "SousFamille")));
+            sqlCmd.Parameters.Add(new SQLiteParameter("@RefMarque", ReturnID(article.Marque, "Marque")));
+            String prix = article.PrixHT.ToString();
+            if (!prix.Contains(".") && !prix.Contains(","))
+                prix = prix + ",00";
+            prix = prix.Replace('.', ',');
+            sqlCmd.Parameters.Add(new SQLiteParameter("@Prix", prix));
+
+            sqlCmd.Connection = sqlConn;
+            sqlConn.Open();
+
+            SQLiteTransaction trans = sqlConn.BeginTransaction();
+            try
+            {
+                Console.WriteLine(sqlCmd.ExecuteNonQuery() + " : " + sqlCmd.CommandText + sqlCmd.Parameters[4]);
             }
             catch (SQLiteException e)
             {
@@ -151,15 +208,16 @@ namespace Mercure
             SousFamille sousfamille = new SousFamille();
 
             sqlConn.Open();
-            SQLiteCommand sqlCmd = new SQLiteCommand("SELECT RefSousFamille, Nom FROM SousFamilles WHERE RefSousFamille = @RefSousFamille", sqlConn);
+            SQLiteCommand sqlCmd = new SQLiteCommand("SELECT RefFamille, RefSousFamille, Nom FROM SousFamilles WHERE RefSousFamille = @RefSousFamille", sqlConn);
             sqlCmd.Parameters.Add(new SQLiteParameter("@RefSousFamille", refSousFamille));
 
             SQLiteDataReader reader = sqlCmd.ExecuteReader();
 
             if (reader.Read())
             {
-                sousfamille.RefSousFamille = reader.GetInt32(0);
-                sousfamille.Nom = reader.GetString(1);
+                sousfamille.RefFamille = reader.GetInt32(0);
+                sousfamille.RefSousFamille = reader.GetInt32(1);
+                sousfamille.Nom = reader.GetString(2);
             }
 
             reader.Close();
@@ -460,7 +518,7 @@ namespace Mercure
                 String sousFamille = reader.GetString(4);
                 String prix = reader.GetString(5);
 
-                String[] article = { description, refArticle, marque, famille, sousFamille, prix };
+                String[] article = { description, refArticle, marque, famille, sousFamille, prix.ToString() };
                 list.Add(article);
             }
 
@@ -633,8 +691,6 @@ namespace Mercure
         /// <param name="article">article to add</param>
         internal void AjouterArticleToDB(Article article)
         {
-            DeleteArticle(article.RefArticle);
-
             sqlConn = new SQLiteConnection("Data Source=Mercure.SQLite;");
 
             SQLiteCommand sqlCmd = new SQLiteCommand("INSERT INTO Articles VALUES(@RefArticle, @Description,@idSousFamille, @idMarque, @Prix,0);", sqlConn);
@@ -643,7 +699,11 @@ namespace Mercure
             sqlCmd.Parameters.Add(new SQLiteParameter("@Description", article.Description));
             sqlCmd.Parameters.Add(new SQLiteParameter("@idSousFamille", ReturnID(article.SousFamille, "SousFamille")));
             sqlCmd.Parameters.Add(new SQLiteParameter("@IdMarque", ReturnID(article.Marque, "Marque")));
-            sqlCmd.Parameters.Add(new SQLiteParameter("@Prix", article.PrixHT.ToString()));
+            String prix = article.PrixHT.ToString();
+            if (!prix.Contains(".") && !prix.Contains(","))
+                prix = prix + ",00";
+            prix = prix.Replace('.', ',');
+            sqlCmd.Parameters.Add(new SQLiteParameter("@Prix", prix));
 
             sqlCmd.Connection = sqlConn;
             sqlConn.Open();

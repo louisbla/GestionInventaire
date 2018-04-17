@@ -80,21 +80,21 @@
             // ajouterUneFamilleToolStripMenuItem
             // 
             this.ajouterUneFamilleToolStripMenuItem.Name = "ajouterUneFamilleToolStripMenuItem";
-            this.ajouterUneFamilleToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.ajouterUneFamilleToolStripMenuItem.Size = new System.Drawing.Size(205, 24);
             this.ajouterUneFamilleToolStripMenuItem.Text = "Ajouter une famille";
             this.ajouterUneFamilleToolStripMenuItem.Click += new System.EventHandler(this.ajouterUneFamilleToolStripMenuItem_Click);
             // 
             // modifierToolStripMenuItem
             // 
             this.modifierToolStripMenuItem.Name = "modifierToolStripMenuItem";
-            this.modifierToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.modifierToolStripMenuItem.Size = new System.Drawing.Size(205, 24);
             this.modifierToolStripMenuItem.Text = "Modifier";
             this.modifierToolStripMenuItem.Click += new System.EventHandler(this.modifierToolStripMenuItem_Click);
             // 
             // supprimerToolStripMenuItem
             // 
             this.supprimerToolStripMenuItem.Name = "supprimerToolStripMenuItem";
-            this.supprimerToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.supprimerToolStripMenuItem.Size = new System.Drawing.Size(205, 24);
             this.supprimerToolStripMenuItem.Text = "Supprimer";
             this.supprimerToolStripMenuItem.Click += new System.EventHandler(this.supprimerToolStripMenuItem_Click);
             // 
@@ -104,8 +104,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.familleListview);
+            this.MinimumSize = new System.Drawing.Size(400, 200);
             this.Name = "ListFamilleForm";
-            this.Text = "ListFamilleForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Liste des familles";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ListFamilleForm_KeyDown);
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);

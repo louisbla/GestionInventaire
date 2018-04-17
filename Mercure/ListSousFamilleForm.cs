@@ -31,10 +31,6 @@ namespace Mercure
                     //Suppression des articles de la sous famille
                     DBManager.GetInstance().DeleteArticlesBySousFamille(Int32.Parse(refSousFamilleToDelete));
                 
-
-                    //Supprimer toutes les sous familles associées à la famille
-                    DBManager.GetInstance().DeleteSousFamillesByFamille(refSousFamilleToDelete);
-
                     DBManager.GetInstance().DeleteSousFamille(sousfamille);
 
                     RefreshListView();
@@ -52,6 +48,7 @@ namespace Mercure
                     int SelectedIndex = sousfamilleListview.SelectedIndices[0];
                     String refSousFamilleToEdit = this.sousfamilleListview.Items[SelectedIndex].SubItems[0].Text;
                     SousFamille sousfamille = DBManager.GetInstance().GetSousFamilleByRef(refSousFamilleToEdit);
+
 
                     AddSousFamilleForm form = new AddSousFamilleForm(sousfamille);
                     form.ShowDialog();

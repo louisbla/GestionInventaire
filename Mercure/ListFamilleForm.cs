@@ -57,6 +57,7 @@ namespace Mercure
                     //Supprimer toutes les sous familles associées à la famille
                     DBManager.GetInstance().DeleteSousFamillesByFamille(refFamilleToDelete);
 
+                    //Supprimer la famille
                     DBManager.GetInstance().DeleteFamille(famille);
 
                     RefreshListView();
@@ -124,6 +125,7 @@ namespace Mercure
                     //Supprimer toutes les sous familles associées à la famille
                     DBManager.GetInstance().DeleteSousFamillesByFamille(refFamilleToDelete);
 
+                    //Supprimer la famille
                     DBManager.GetInstance().DeleteFamille(famille);
 
                     RefreshListView();

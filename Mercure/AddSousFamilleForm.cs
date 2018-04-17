@@ -12,14 +12,15 @@ namespace Mercure
 {
     public partial class AddSousFamilleForm : Form
     {
-        private SousFamille sousfamille;
+        private SousFamille sousFamille;
 
         public AddSousFamilleForm()
         {
             InitializeComponent();
 
             familleCombobox.Items.AddRange(DBManager.GetInstance().GetFamilleNames());
-            familleCombobox.SelectedIndex = 1;
+            if(familleCombobox.Items.Count != 0)
+                familleCombobox.SelectedIndex = 0;
         }
 
         public AddSousFamilleForm(SousFamille sousfamilleToEdit)
@@ -28,11 +29,11 @@ namespace Mercure
 
             this.Text = "Modifier une sous-famille";
 
-            sousfamille = sousfamilleToEdit;
+            sousFamille = sousfamilleToEdit;
             sousFamilleTxtbox.Text = sousfamilleToEdit.Nom;
 
             familleCombobox.Items.AddRange(DBManager.GetInstance().GetFamilleNames());
-            familleCombobox.SelectedIndex = familleCombobox.Items.IndexOf(sousfamilleToEdit.Nom);
+            familleCombobox.SelectedIndex = familleCombobox.Items.IndexOf(DBManager.GetInstance().GetFamilleByRef(sousfamilleToEdit.RefFamille.ToString()).Nom);
         }
 
         private void cancelBtn_Click(object sender, EventArgs e)
@@ -42,19 +43,28 @@ namespace Mercure
 
         private void acceptBtn_Click(object sender, EventArgs e)
         {
-            String sousFamille = sousFamilleTxtbox.Text;
-            String famille = familleCombobox.Text;
+            if (sousFamilleTxtbox.Text != "" && familleCombobox.Text != "")
+            {
+                if (sousFamille != null)
+                {
+                    sousFamille.Nom = sousFamilleTxtbox.Text;
+                    sousFamille.RefFamille = DBManager.GetInstance().getRefFamille(familleCombobox.Text);
 
-            //Ajouter article to DB
-            DBManager.GetInstance().AjouterSousFamilleToDB(sousFamille, famille);
+                    //edit sous famille in DB
+                    DBManager.GetInstance().EditSousFamille(sousFamille);
+                }
+                else
+                {
+                    sousFamille = new SousFamille();
+                    sousFamille.Nom = sousFamilleTxtbox.Text;
+                    sousFamille.RefFamille = DBManager.GetInstance().getRefFamille(familleCombobox.Text);
 
+                    //Ajouter sous famille to DB
+                    DBManager.GetInstance().AjouterSousFamilleToDB(sousFamille.Nom, familleCombobox.Text);
+                }
 
-            this.Close();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
+                this.Close();
+            }
         }
     }
 }

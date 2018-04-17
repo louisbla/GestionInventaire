@@ -177,5 +177,22 @@ namespace Mercure
             form.ShowDialog();
             RefreshListView();
         }
+
+        private void articleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddArticleForm form = new AddArticleForm();
+            form.ShowDialog();
+            RefreshListView();
+        }
+
+        private void articleListview_SizeChanged(object sender, EventArgs e)
+        {
+            articleListview.Columns[0].Width = articleListview.Width / 6;
+            articleListview.Columns[1].Width = articleListview.Width / 6;
+            articleListview.Columns[2].Width = articleListview.Width / 6;
+            articleListview.Columns[3].Width = articleListview.Width / 6;
+            articleListview.Columns[4].Width = articleListview.Width / 6;
+            articleListview.Columns[5].Width = articleListview.Width / 6;
+        }
     }
 }

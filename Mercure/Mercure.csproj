@@ -73,12 +73,6 @@
     <Compile Include="AddArticleForm.Designer.cs">
       <DependentUpon>AddArticleForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ArticleEditForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ArticleEditForm.Designer.cs">
-      <DependentUpon>ArticleEditForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="DBManager.cs" />
     <Compile Include="Famille.cs" />
     <Compile Include="ListFamilleForm.cs">
@@ -126,9 +120,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AddArticleForm.resx">
       <DependentUpon>AddArticleForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ArticleEditForm.resx">
-      <DependentUpon>ArticleEditForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ListFamilleForm.resx">
       <DependentUpon>ListFamilleForm.cs</DependentUpon>

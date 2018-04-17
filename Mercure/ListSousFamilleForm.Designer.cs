@@ -112,8 +112,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.sousfamilleListview);
+            this.MinimumSize = new System.Drawing.Size(400, 200);
             this.Name = "ListSousFamilleForm";
-            this.Text = "ListSousFamilleForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Liste des sous-familles";
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 

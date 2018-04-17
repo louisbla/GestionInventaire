@@ -111,6 +111,7 @@
             this.articleToolStripMenuItem.Name = "articleToolStripMenuItem";
             this.articleToolStripMenuItem.Size = new System.Drawing.Size(167, 26);
             this.articleToolStripMenuItem.Text = "Article";
+            this.articleToolStripMenuItem.Click += new System.EventHandler(this.articleToolStripMenuItem_Click);
             // 
             // marqueToolStripMenuItem
             // 
@@ -182,12 +183,12 @@
             this.modifierArticleToolStripMenuItem,
             this.supprimerArticleToolStripMenuItem});
             this.articleContextMenu.Name = "contextMenuStrip1";
-            this.articleContextMenu.Size = new System.Drawing.Size(211, 104);
+            this.articleContextMenu.Size = new System.Drawing.Size(193, 76);
             // 
             // ajouterArticleToolStripMenuItem
             // 
             this.ajouterArticleToolStripMenuItem.Name = "ajouterArticleToolStripMenuItem";
-            this.ajouterArticleToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.ajouterArticleToolStripMenuItem.Size = new System.Drawing.Size(192, 24);
             this.ajouterArticleToolStripMenuItem.Text = "Ajouter Article";
             this.ajouterArticleToolStripMenuItem.Click += new System.EventHandler(this.ajouterArticleToolStripMenuItem_Click);
             // 
@@ -226,6 +227,7 @@
             this.articleListview.TabIndex = 4;
             this.articleListview.UseCompatibleStateImageBehavior = false;
             this.articleListview.View = System.Windows.Forms.View.Details;
+            this.articleListview.SizeChanged += new System.EventHandler(this.articleListview_SizeChanged);
             this.articleListview.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ArticleListview_KeyDown);
             this.articleListview.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.articleListview_MouseDoubleClick);
             // 
@@ -264,6 +266,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MinimumSize = new System.Drawing.Size(750, 250);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gestion d\'inventaire";

@@ -69,10 +69,11 @@ namespace Mercure
             article.Description = descriptionTxtBox.Text;
             article.SousFamille = sousFamilleCombo.Text;
             article.Marque = marqueCombo.Text;
-            article.PrixHT = (float)prixNum.Value;
+            Console.WriteLine(prixNum.Value);
+            article.PrixHT = (float)decimal.ToDouble(prixNum.Value);
 
             //on envoie les données à la base de données
-            DBManager.GetInstance().AjouterArticleToDB(article);
+            DBManager.GetInstance().EditArticle(article);
 
             this.Close();
         }
