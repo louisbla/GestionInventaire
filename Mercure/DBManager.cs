@@ -24,10 +24,16 @@ namespace Mercure
             return sqlConn;
         }
 
-        public int getRefFamille(string nom)
+        /// <summary>
+        /// Get a family thanks to its name
+        /// </summary>
+        /// <param name="nom">Family name</param>
+        /// <returns>Famille object</returns>
+           public int getRefFamille(string nom)
         {
             int refFamille = 0;
 
+            //Ouverture de la BDD et préparation de la requete
             sqlConn.Open();
             SQLiteCommand sqlCmd = new SQLiteCommand("SELECT RefFamille FROM Familles WHERE Nom = @Nom", sqlConn);
             sqlCmd.Parameters.Add(new SQLiteParameter("@Nom", nom));
@@ -47,7 +53,7 @@ namespace Mercure
         }
 
         /// <summary>
-        /// Edit a brand
+        /// Edit a brand (change its name)
         /// </summary>
         /// <param name="marque">Object name to edit</param>
         /// <param name="nom">New name</param>
@@ -79,6 +85,10 @@ namespace Mercure
             sqlConn.Close();
         }
 
+        /// <summary>
+        /// Edit a sous famille
+        /// </summary>
+        /// <param name="sousFamille">New object new sous-famille which will remplace the old one</param>
         internal void EditSousFamille(SousFamille sousFamille)
         {
             sqlConn = new SQLiteConnection("Data Source=Mercure.SQLite;");
@@ -108,6 +118,10 @@ namespace Mercure
             sqlConn.Close();
         }
 
+        /// <summary>
+        /// Edit an article
+        /// </summary>
+        /// <param name="article">New object article which will remplace the old one</param>
         internal void EditArticle(Article article)
         {
             sqlConn = new SQLiteConnection("Data Source=Mercure.SQLite;");
@@ -142,9 +156,9 @@ namespace Mercure
         }
 
         /// <summary>
-        /// Edit a famille
+        /// Edit a famille (just its name)
         /// </summary>
-        /// <param name="famille">Object name to edit</param>
+        /// <param name="famille">Old object name to edit</param>
         /// <param name="nom">New name</param>
         internal void EditFamille(Famille famille, string nom)
         {
@@ -175,7 +189,7 @@ namespace Mercure
         }
 
         /// <summary>
-        /// Get a family object thanks to it reference.
+        /// Get a family object thanks to its reference.
         /// </summary>
         public Famille GetFamilleByRef(string refFamilleToEdit)
         {
@@ -201,7 +215,7 @@ namespace Mercure
         }
 
         /// <summary>
-        /// Get a sous-famille object thanks to it reference.
+        /// Get a sous-famille object thanks to its reference.
         /// </summary>
         public SousFamille GetSousFamilleByRef(string refSousFamille)
         {
@@ -230,6 +244,8 @@ namespace Mercure
         /// <summary>
         /// Get all sous-familles that belong to a family
         /// </summary>
+        /// <param name="refFamille">Family name</param>
+        /// <returns>A list of "sous-famille"</returns>
         public List<SousFamille> GetListeSousFamillesByFamille(string refFamille)
         {
             Famille famille = new Famille();
@@ -238,7 +254,7 @@ namespace Mercure
 
             sqlConn.Open();
 
-            //Compter combien de résultat
+            //Compter combien de résultat la requete retourne
             int nbResults = 0;
             SQLiteCommand sqlCmd = new SQLiteCommand("SELECT COUNT(*) FROM SousFamilles WHERE RefFamille = @RefFamille", sqlConn);
             sqlCmd.Parameters.Add(new SQLiteParameter("@RefFamille", refFamille));
@@ -260,6 +276,7 @@ namespace Mercure
 
             if (reader.Read())
             {
+                //On boucle sur le nombre de résultats obtenus
                 for(int i=0; i < nbResults; i++)
                 {
                     sousFamille.RefSousFamille = reader.GetInt32(0);
@@ -279,10 +296,10 @@ namespace Mercure
         }
 
         /// <summary>
-        /// Get an article thanks to his reference
+        /// Get an brand thanks to its reference
         /// </summary>
-        /// <param name="reference">reference (ID) of the article</param>
-        /// <returns>Returns an object Article</returns>
+        /// <param name="reference">reference (ID) of the brand</param>
+        /// <returns>Returns an object Marque</returns>
         public Marque GetMarqueByRef(string refMarqueToEdit)
         {
             Marque marque = new Marque();
@@ -308,7 +325,7 @@ namespace Mercure
 
       
         /// <summary>
-        /// Get an article thanks to his reference
+        /// Get an article thanks to its reference
         /// </summary>
         /// <param name="reference">reference (ID) of the article</param>
         /// <returns>Returns an object Article</returns>
@@ -353,6 +370,7 @@ namespace Mercure
 
             SQLiteCommand sqlCmd = new SQLiteCommand("INSERT INTO Marques VALUES(@RefMarque, @Nom);", sqlConn);
 
+            //On récupère l'id max présent dans la table marque
             int id = ReturnIdMax("Marque");
             sqlCmd.Parameters.Add(new SQLiteParameter("@RefMarque", id + 1));
             sqlCmd.Parameters.Add(new SQLiteParameter("@Nom", marque));
@@ -440,12 +458,7 @@ namespace Mercure
             sqlConn.Close();
         }
 
-        /// <summary>
-        /// Add a 'sous-famille' to the DB
-        /// </summary>
-        /// <param name="sousFamille">'sous-famille' name we want to add</param>
-        /// <param name="famille">Family name to which the 'sous-famille' belongs</param>
-
+        
         /// <summary>
         /// Delete all articles related to a brand
         /// </summary>
@@ -498,8 +511,9 @@ namespace Mercure
         }
 
         /// <summary>
-        /// Return a list of articles : { RedfArcticle, description,marque,famille,sousFamille,prix }
+        /// Get all articles
         /// </summary>
+        /// <returns>Returns a list of articles : { RedfArcticle, description,marque,famille,sousFamille,prix }</returns>
         public List<string[]> GetListArticles()
         {
             List<String[]> list = new List<string[]>();
@@ -509,6 +523,7 @@ namespace Mercure
             sqlCmd.CommandText = "SELECT a.Description, a.RefArticle, m.Nom as 'Marque', f.Nom as 'Famille', sf.Nom as 'Sous-famille', a.PrixHT FROM Articles a, Marques m, SousFamilles sf, Familles f WHERE a.RefMarque = m.RefMarque AND a.RefSousFamille = sf.RefSousFamille AND sf.RefFamille = f.RefFamille";
             SQLiteDataReader reader = sqlCmd.ExecuteReader();
 
+            //Tant qu'on lit une ligne
             while (reader.Read())
             {
                 String description = reader.GetString(0);
@@ -530,8 +545,9 @@ namespace Mercure
         }
 
         /// <summary>
-        /// Return a list of brands : { RefMarque, Nom }
+        /// Get all brands
         /// </summary>
+        /// <returns> Returns a list of brands : { RefMarque, Nom }</returns>
         public List<String[]> GetListMarques()
         {
             List<String[]> list = new List<string[]>();
@@ -555,8 +571,9 @@ namespace Mercure
         }
 
         /// <summary>
-        /// Return a list of families : { RefFamille, Nom }
+        /// Get all families
         /// </summary>
+        /// <returns> Returns a list of families : { RefFamille, Nom }</returns>
         public List<String[]> GetListFamilles()
         {
             List<String[]> list = new List<string[]>();
@@ -580,8 +597,9 @@ namespace Mercure
         }
 
         /// <summary>
-        /// Return a list of 'sous-familles' : { RefSousFamille, Nom }
+        /// Get all "sous-familles"
         /// </summary>
+        /// <returns>Return a list of 'sous-familles' : { RefSousFamille, Nom }</returns>
         public List<String[]> GetListSousFamilles()
         {
             List<String[]> list = new List<string[]>();
@@ -605,7 +623,7 @@ namespace Mercure
         }
 
         /// <summary>
-        /// Returns the brand names in the database
+        /// Returns all the brand names in the database
         /// </summary>
         public String[] GetMarquesNames()
         {
@@ -629,7 +647,7 @@ namespace Mercure
         }
 
         /// <summary>
-        /// Return family names in the database
+        /// Return all families names in the database
         /// </summary>
         public String[] GetFamilleNames()
         {
@@ -653,7 +671,7 @@ namespace Mercure
         }
 
         /// <summary>
-        /// Return 'sous-famille' names in the database
+        /// Return all 'sous-famille' names in the database
         /// </summary>
         public String[] GetSousFamilleNames()
         {

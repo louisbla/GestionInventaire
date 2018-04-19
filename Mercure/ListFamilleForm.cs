@@ -23,6 +23,9 @@ namespace Mercure
 
         }
 
+        /// <summary>
+        /// Refresh,update the listview
+        /// </summary>
         private void RefreshListView()
         {
             familleListview.Items.Clear();
@@ -38,8 +41,10 @@ namespace Mercure
 
         private void familleListview_KeyDown(object sender, KeyEventArgs e)
         {
+            //Si on appuie sur la touche "suppr" et qu'une famille et sélectionnée
             if (e.KeyCode == Keys.Delete && familleListview.SelectedIndices.Count == 1)
             {
+                //Si on appuie sur OK sur la fenetre de warning
                 if (DialogResult.OK == MessageBox.Show("Attention, vous êtes sur le point de supprimer une famille, et tous les articles et sous familles associés à cette famille. \n Etes vous sur de vouloir continuer ?", "Attention", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning))
                 {
                     int SelectedIndex = familleListview.SelectedIndices[0];
@@ -68,6 +73,7 @@ namespace Mercure
             {
                 RefreshListView();
             }
+            //Si on appuie sur "entrer" pour modifier
             else if (e.KeyCode == Keys.Enter)
             {
                 if (familleListview.SelectedIndices.Count == 1)
@@ -82,7 +88,7 @@ namespace Mercure
                 }
             }
         }
-
+  
         private void ajouterUneFamilleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AddFamilleForm form = new AddFamilleForm();

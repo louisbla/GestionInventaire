@@ -20,6 +20,10 @@ namespace Mercure
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Constructor used to edit a family
+        /// </summary>
+        /// <param name="familleToEdit">Family information with will fill the form</param>
         public AddFamilleForm(Famille familleToEdit)
         {
             InitializeComponent();
@@ -35,6 +39,9 @@ namespace Mercure
             this.Close();
         }
 
+        /// <summary>
+        /// Accept the form if the fields aren't empty.
+        /// </summary>
         private void acceptBtn_Click(object sender, EventArgs e)
         {
             if (FamilleTxtbox.Text != "")

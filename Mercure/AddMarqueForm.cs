@@ -19,6 +19,10 @@ namespace Mercure
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Constructor used to edit a Marque
+        /// </summary>
+        /// <param name="marqueToEdit">Marque information with will fill the form</param>
         public AddMarqueForm(Marque marqueToEdit)
         {
             InitializeComponent();

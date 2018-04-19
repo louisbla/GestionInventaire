@@ -185,6 +185,11 @@ namespace Mercure
             RefreshListView();
         }
 
+        /// <summary>
+        /// Gestion de la largeur des colonnes si on redimmensionne la fenetre
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void articleListview_SizeChanged(object sender, EventArgs e)
         {
             articleListview.Columns[0].Width = articleListview.Width / 6;

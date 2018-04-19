@@ -14,6 +14,10 @@ namespace Mercure
     {
         Article article;
 
+        /// <summary>
+        /// Constructor used to edit an Article
+        /// </summary>
+        /// <param name="reference">Reference of the article we want to edit</param>
         public AddArticleForm(String reference)
         {
             InitializeComponent();

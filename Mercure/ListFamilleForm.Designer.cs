@@ -51,7 +51,7 @@
             this.familleListview.Location = new System.Drawing.Point(0, 0);
             this.familleListview.MultiSelect = false;
             this.familleListview.Name = "familleListview";
-            this.familleListview.Size = new System.Drawing.Size(800, 450);
+            this.familleListview.Size = new System.Drawing.Size(448, 442);
             this.familleListview.TabIndex = 1;
             this.familleListview.UseCompatibleStateImageBehavior = false;
             this.familleListview.View = System.Windows.Forms.View.Details;
@@ -65,7 +65,7 @@
             // columnHeader10
             // 
             this.columnHeader10.Text = "Nom";
-            this.columnHeader10.Width = 138;
+            this.columnHeader10.Width = 250;
             // 
             // contextMenuStrip1
             // 
@@ -102,7 +102,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(448, 442);
             this.Controls.Add(this.familleListview);
             this.MinimumSize = new System.Drawing.Size(400, 200);
             this.Name = "ListFamilleForm";

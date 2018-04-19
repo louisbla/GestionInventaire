@@ -23,6 +23,10 @@ namespace Mercure
                 familleCombobox.SelectedIndex = 0;
         }
 
+        /// <summary>
+        /// Constructor used to edit a SousFamille
+        /// </summary>
+        /// <param name="sousfamilleToEdit">SousFamille information with will fill the form</param>
         public AddSousFamilleForm(SousFamille sousfamilleToEdit)
         {
             InitializeComponent();
@@ -33,6 +37,7 @@ namespace Mercure
             sousFamilleTxtbox.Text = sousfamilleToEdit.Nom;
 
             familleCombobox.Items.AddRange(DBManager.GetInstance().GetFamilleNames());
+            // On sélectionne dans la comboBox l'objet correspondant à celui qu'on à voulu éditer
             familleCombobox.SelectedIndex = familleCombobox.Items.IndexOf(DBManager.GetInstance().GetFamilleByRef(sousfamilleToEdit.RefFamille.ToString()).Nom);
         }
 
