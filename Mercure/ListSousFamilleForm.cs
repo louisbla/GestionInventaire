@@ -67,6 +67,16 @@ namespace Mercure
                 ListViewItem item = new ListViewItem(sousFamille);
                 sousfamilleListview.Items.Add(item);
             }
+
+            if (sousfamilleListview.Items.Count == 0)
+            {
+                sousfamilleListview.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+            }
+            else
+            {
+                sousfamilleListview.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+                sousfamilleListview.AutoResizeColumn(0, ColumnHeaderAutoResizeStyle.HeaderSize);
+            }
         }
 
         private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)

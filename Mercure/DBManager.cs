@@ -126,7 +126,7 @@ namespace Mercure
         {
             sqlConn = new SQLiteConnection("Data Source=Mercure.SQLite;");
 
-            SQLiteCommand sqlCmd = new SQLiteCommand("UPDATE Articles SET RefArticle = @RefArticle, Description = @Description, RefSousFamille = @RefSousFamille, RefMarque = @RefMarque, PrixHT = @Prix WHERE RefArticle = @RefArticle;", sqlConn);
+            SQLiteCommand sqlCmd = new SQLiteCommand("UPDATE Articles SET RefArticle = @RefArticle, Description = @Description, RefSousFamille = @RefSousFamille, RefMarque = @RefMarque, PrixHT = @Prix, Quantite = @Quantite WHERE RefArticle = @RefArticle;", sqlConn);
 
             sqlCmd.Parameters.Add(new SQLiteParameter("@RefArticle", article.RefArticle));
             sqlCmd.Parameters.Add(new SQLiteParameter("@Description", article.Description));
@@ -137,6 +137,7 @@ namespace Mercure
                 prix = prix + ",00";
             prix = prix.Replace('.', ',');
             sqlCmd.Parameters.Add(new SQLiteParameter("@Prix", prix));
+            sqlCmd.Parameters.Add(new SQLiteParameter("@Quantite", article.Quantite));
 
             sqlCmd.Connection = sqlConn;
             sqlConn.Open();
@@ -336,7 +337,7 @@ namespace Mercure
             sqlConn.Open();
 
             //Requête 
-            SQLiteCommand sqlCmd = new SQLiteCommand("SELECT a.Description, a.RefArticle, m.Nom as 'Marque', f.Nom as 'Famille', sf.Nom as 'Sous-famille', a.PrixHT FROM Articles a, Marques m, SousFamilles sf, Familles f WHERE a.RefMarque = m.RefMarque AND a.RefSousFamille = sf.RefSousFamille AND sf.RefFamille = f.RefFamille AND a.RefArticle = @ref", sqlConn);
+            SQLiteCommand sqlCmd = new SQLiteCommand("SELECT a.Description, a.RefArticle, m.Nom as 'Marque', f.Nom as 'Famille', sf.Nom as 'Sous-famille', a.PrixHT, a.Quantite FROM Articles a, Marques m, SousFamilles sf, Familles f WHERE a.RefMarque = m.RefMarque AND a.RefSousFamille = sf.RefSousFamille AND sf.RefFamille = f.RefFamille AND a.RefArticle = @ref", sqlConn);
             SQLiteParameter param = new SQLiteParameter("@ref", reference);
             sqlCmd.Parameters.Add(param);
             
@@ -350,6 +351,7 @@ namespace Mercure
                 article.Famille = reader.GetString(3);
                 article.SousFamille = reader.GetString(4);
                 article.PrixHT = float.Parse(reader.GetString(5));
+                article.Quantite = reader.GetInt32(6);
             }
 
             reader.Close();
@@ -520,7 +522,7 @@ namespace Mercure
 
             sqlConn.Open();
             SQLiteCommand sqlCmd = sqlConn.CreateCommand();
-            sqlCmd.CommandText = "SELECT a.Description, a.RefArticle, m.Nom as 'Marque', f.Nom as 'Famille', sf.Nom as 'Sous-famille', a.PrixHT FROM Articles a, Marques m, SousFamilles sf, Familles f WHERE a.RefMarque = m.RefMarque AND a.RefSousFamille = sf.RefSousFamille AND sf.RefFamille = f.RefFamille";
+            sqlCmd.CommandText = "SELECT a.Description, a.RefArticle, m.Nom as 'Marque', f.Nom as 'Famille', sf.Nom as 'Sous-famille', a.PrixHT, a.Quantite FROM Articles a, Marques m, SousFamilles sf, Familles f WHERE a.RefMarque = m.RefMarque AND a.RefSousFamille = sf.RefSousFamille AND sf.RefFamille = f.RefFamille";
             SQLiteDataReader reader = sqlCmd.ExecuteReader();
 
             //Tant qu'on lit une ligne
@@ -532,8 +534,9 @@ namespace Mercure
                 String famille = reader.GetString(3);
                 String sousFamille = reader.GetString(4);
                 String prix = reader.GetString(5);
+                String quantite = reader.GetInt32(6).ToString();
 
-                String[] article = { description, refArticle, marque, famille, sousFamille, prix.ToString() };
+                String[] article = { description, refArticle, marque, famille, sousFamille, prix.ToString(), quantite };
                 list.Add(article);
             }
 
@@ -711,7 +714,7 @@ namespace Mercure
         {
             sqlConn = new SQLiteConnection("Data Source=Mercure.SQLite;");
 
-            SQLiteCommand sqlCmd = new SQLiteCommand("INSERT INTO Articles VALUES(@RefArticle, @Description,@idSousFamille, @idMarque, @Prix,0);", sqlConn);
+            SQLiteCommand sqlCmd = new SQLiteCommand("INSERT INTO Articles VALUES(@RefArticle, @Description,@idSousFamille, @idMarque, @Prix,@Quantite);", sqlConn);
 
             sqlCmd.Parameters.Add(new SQLiteParameter("@RefArticle", article.RefArticle));
             sqlCmd.Parameters.Add(new SQLiteParameter("@Description", article.Description));
@@ -722,6 +725,7 @@ namespace Mercure
                 prix = prix + ",00";
             prix = prix.Replace('.', ',');
             sqlCmd.Parameters.Add(new SQLiteParameter("@Prix", prix));
+            sqlCmd.Parameters.Add(new SQLiteParameter("@Quantite", article.Quantite));
 
             sqlCmd.Connection = sqlConn;
             sqlConn.Open();
@@ -784,8 +788,8 @@ namespace Mercure
                 Description = list[i];
                 RefArticle = list[i + 1];
                 Marque = list[i + 2];
-                SousFamille = list[i + 3];
-                Famille = list[i + 4];
+                Famille = list[i + 3];
+                SousFamille = list[i + 4];
                 Prix = list[i + 5];
 
                 //est-ce que la famille existe ?

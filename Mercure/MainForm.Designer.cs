@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fichierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.selectionnerFichierXMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,6 +55,7 @@
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.menuStrip1.SuspendLayout();
             this.articleContextMenu.SuspendLayout();
             this.SuspendLayout();
@@ -214,7 +216,8 @@
             this.columnHeader3,
             this.columnHeader4,
             this.columnHeader5,
-            this.columnHeader6});
+            this.columnHeader6,
+            this.columnHeader7});
             this.articleListview.ContextMenuStrip = this.articleContextMenu;
             this.articleListview.Dock = System.Windows.Forms.DockStyle.Fill;
             this.articleListview.FullRowSelect = true;
@@ -227,7 +230,6 @@
             this.articleListview.TabIndex = 4;
             this.articleListview.UseCompatibleStateImageBehavior = false;
             this.articleListview.View = System.Windows.Forms.View.Details;
-            this.articleListview.SizeChanged += new System.EventHandler(this.articleListview_SizeChanged);
             this.articleListview.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ArticleListview_KeyDown);
             this.articleListview.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.articleListview_MouseDoubleClick);
             // 
@@ -256,6 +258,10 @@
             // 
             this.columnHeader6.Text = "PrixHT";
             // 
+            // columnHeader7
+            // 
+            this.columnHeader7.Text = "Quantité";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -264,12 +270,14 @@
             this.Controls.Add(this.articleListview);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(750, 250);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gestion d\'inventaire";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.articleContextMenu.ResumeLayout(false);
@@ -305,5 +313,6 @@
         private System.Windows.Forms.ToolStripMenuItem marquesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem famillesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sousFamillesToolStripMenuItem;
+        private System.Windows.Forms.ColumnHeader columnHeader7;
     }
 }

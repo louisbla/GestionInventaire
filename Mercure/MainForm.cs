@@ -16,14 +16,19 @@ namespace Mercure
         public MainForm()
         {
             InitializeComponent();
+            RefreshListView();
+
+            
+
         }
 
         private void SelectionnerFichierXMLToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SelectionXML selectionXML = new SelectionXML();
-            selectionXML.ShowDialog();
-
-            RefreshListView();
+            if(selectionXML.ShowDialog() == DialogResult.OK)
+            {
+                RefreshListView();
+            }
         }
 
 
@@ -50,6 +55,16 @@ namespace Mercure
                 ListViewItem itemArticle = new ListViewItem(article);
                 articleListview.Items.Add(itemArticle);
             }
+            if (articleListview.Items.Count == 0)
+            {
+                articleListview.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+            }
+            else
+            {
+                articleListview.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+                articleListview.AutoResizeColumn(5, ColumnHeaderAutoResizeStyle.HeaderSize);
+                articleListview.AutoResizeColumn(6, ColumnHeaderAutoResizeStyle.HeaderSize);
+            }
         }
 
         private void MarqueToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -63,12 +78,14 @@ namespace Mercure
         {
             AddFamilleForm form = new AddFamilleForm();
             form.ShowDialog();
+            RefreshListView();
         }
 
         private void SousfamilleToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             AddSousFamilleForm form = new AddSousFamilleForm();
             form.ShowDialog();
+            RefreshListView();
         }
 
         private void ModifierArticleToolStripMenuItem_Click(object sender, EventArgs e)
@@ -141,18 +158,21 @@ namespace Mercure
         {
             ListMarqueForm form = new ListMarqueForm();
             form.ShowDialog();
+            RefreshListView();
         }
 
         private void famillesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ListFamilleForm form = new ListFamilleForm();
             form.ShowDialog();
+            RefreshListView();
         }
 
         private void sousFamillesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ListSousFamilleForm form = new ListSousFamilleForm();
             form.ShowDialog();
+            RefreshListView();
         }
 
         /// <summary>
@@ -183,21 +203,6 @@ namespace Mercure
             AddArticleForm form = new AddArticleForm();
             form.ShowDialog();
             RefreshListView();
-        }
-
-        /// <summary>
-        /// Gestion de la largeur des colonnes si on redimmensionne la fenetre
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void articleListview_SizeChanged(object sender, EventArgs e)
-        {
-            articleListview.Columns[0].Width = articleListview.Width / 6;
-            articleListview.Columns[1].Width = articleListview.Width / 6;
-            articleListview.Columns[2].Width = articleListview.Width / 6;
-            articleListview.Columns[3].Width = articleListview.Width / 6;
-            articleListview.Columns[4].Width = articleListview.Width / 6;
-            articleListview.Columns[5].Width = articleListview.Width / 6;
         }
     }
 }

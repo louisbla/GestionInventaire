@@ -68,6 +68,16 @@ namespace Mercure
 
                 marqueListview.Items.Add(item);
             }
+
+            if (marqueListview.Items.Count == 0)
+            {
+                marqueListview.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+            }
+            else
+            {
+                marqueListview.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+                marqueListview.AutoResizeColumn(0, ColumnHeaderAutoResizeStyle.HeaderSize);
+            }
         }
 
         private void modifierToolStripMenuItem_Click(object sender, EventArgs e)

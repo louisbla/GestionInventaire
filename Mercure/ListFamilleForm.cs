@@ -37,6 +37,15 @@ namespace Mercure
 
                 familleListview.Items.Add(item);
             }
+            if (familleListview.Items.Count == 0)
+            {
+                familleListview.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+            }
+            else
+            {
+                familleListview.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+                familleListview.AutoResizeColumn(0, ColumnHeaderAutoResizeStyle.HeaderSize);
+            }
         }
 
         private void familleListview_KeyDown(object sender, KeyEventArgs e)

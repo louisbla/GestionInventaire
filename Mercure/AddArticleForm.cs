@@ -38,6 +38,7 @@ namespace Mercure
             sousFamilleCombo.Text = article.SousFamille;
             marqueCombo.Text = article.Marque;
             prixNum.Text = article.PrixHT.ToString();
+            quantiteNum.Text = article.Quantite.ToString();
         }
 
         public AddArticleForm()
@@ -62,24 +63,38 @@ namespace Mercure
 
         private void AcceptButton_Click(object sender, EventArgs e)
         {
-            //on récupère les textbox
-            String reference = referenceTxtBox.Text;
-            Article article = DBManager.GetInstance().GetArticleFromReference(reference);
-            if(article.RefArticle == null)
+            if (referenceTxtBox.Text != "" && descriptionTxtBox.Text != "" && sousFamilleCombo.Text != "" && marqueCombo.Text != "")
             {
-                article.RefArticle = reference;
+                //on récupère les textbox
+                String reference = referenceTxtBox.Text;
+                Article article = DBManager.GetInstance().GetArticleFromReference(reference);
+                if (article.RefArticle == null)
+                {
+                    article.RefArticle = reference;
+                    article.Description = descriptionTxtBox.Text;
+                    article.SousFamille = sousFamilleCombo.Text;
+                    article.Marque = marqueCombo.Text;
+                    Console.WriteLine(prixNum.Value);
+                    article.PrixHT = (float)decimal.ToDouble(prixNum.Value);
+                    article.Quantite = decimal.ToInt32(quantiteNum.Value);
+
+                    //on envoie les données à la base de données
+                    DBManager.GetInstance().AjouterArticleToDB(article);
+                }
+                else
+                {
+                    article.Description = descriptionTxtBox.Text;
+                    article.SousFamille = sousFamilleCombo.Text;
+                    article.Marque = marqueCombo.Text;
+                    Console.WriteLine(prixNum.Value);
+                    article.PrixHT = (float)decimal.ToDouble(prixNum.Value);
+                    article.Quantite = decimal.ToInt32(quantiteNum.Value);
+
+                    //on envoie les données à la base de données
+                    DBManager.GetInstance().EditArticle(article);
+                }
+                this.Close();
             }
-
-            article.Description = descriptionTxtBox.Text;
-            article.SousFamille = sousFamilleCombo.Text;
-            article.Marque = marqueCombo.Text;
-            Console.WriteLine(prixNum.Value);
-            article.PrixHT = (float)decimal.ToDouble(prixNum.Value);
-
-            //on envoie les données à la base de données
-            DBManager.GetInstance().EditArticle(article);
-
-            this.Close();
         }
     }
 }

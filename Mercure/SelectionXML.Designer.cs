@@ -165,6 +165,7 @@
             // 
             // Ok_btn
             // 
+            this.Ok_btn.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.Ok_btn.Enabled = false;
             this.Ok_btn.Location = new System.Drawing.Point(265, 437);
             this.Ok_btn.Name = "Ok_btn";
@@ -180,7 +181,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(692, 480);
             this.Controls.Add(this.Ok_btn);
-            this.ClientSize = new System.Drawing.Size(692, 480);
             this.Controls.Add(this.labelNbArticles);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.groupBox1);
